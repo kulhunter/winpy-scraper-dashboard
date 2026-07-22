@@ -1,0 +1,22 @@
+# Node dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Database & Scraper state
+winpy_products.db
+winpy_products.db-journal
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehgfm.txt
+
+# Local environment files
+.env
+.env.local
+.env.*.local

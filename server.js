@@ -11,7 +11,7 @@ const DB_FILE = path.join(__dirname, 'winpy_products.db');
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'docs')));
 
 // Scraper state
 let scraperProcess = null;

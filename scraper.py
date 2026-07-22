@@ -510,12 +510,92 @@ def scrape_queued_products():
             """, (status, new_attempts, result["error"], datetime.datetime.now().isoformat(), url))
             conn.commit()
             log_progress("scrape_products", current_count, total_queue, f"Error raspando producto {url}: {result['error']}")
-            
         conn.close()
         # Polite delay to avoid rate limiting
         time.sleep(0.8)
         
     log_progress("scrape_products", total_queue, total_queue, "Raspado de productos finalizado con éxito.")
+    export_to_json()
+
+def export_to_json():
+    """Exports all products and their price history from SQLite to docs/products.json."""
+    log_progress("export", 0, 1, "Exportando datos de la base de datos a docs/products.json...")
+    try:
+        conn = sqlite3.connect(DB_FILE)
+        cursor = conn.cursor()
+        
+        # Query all products
+        cursor.execute("SELECT * FROM products")
+        columns = [col[0] for col in cursor.description]
+        products_rows = cursor.fetchall()
+        
+        exported_products = []
+        
+        for p_row in products_rows:
+            p = dict(zip(columns, p_row))
+            
+            # Fetch price history for this sku
+            cursor.execute("""
+            SELECT date, cash_price, normal_price, stock 
+            FROM price_history 
+            WHERE sku = ? 
+            ORDER BY date ASC
+            """, (p["sku"],))
+            
+            history_rows = cursor.fetchall()
+            history = []
+            for h in history_rows:
+                history.append({
+                    "date": h[0],
+                    "cash_price": h[1],
+                    "normal_price": h[2],
+                    "stock": h[3]
+                })
+                
+            # Parse detailed specs JSON
+            detailed = {}
+            try:
+                if p["detailed_specs"]:
+                    detailed = json.loads(p["detailed_specs"])
+            except Exception:
+                pass
+                
+            exported_products.append({
+                "sku": p["sku"],
+                "title": p["title"],
+                "brand": p["brand"],
+                "category": p["category"],
+                "condition": p["condition"],
+                "url": p["url"],
+                "cash_price": p["cash_price"],
+                "normal_price": p["normal_price"],
+                "discount": p["discount"],
+                "stock": p["stock"],
+                "spec_processor": p["spec_processor"],
+                "spec_memory": p["spec_memory"],
+                "spec_storage": p["spec_storage"],
+                "spec_os": p["spec_os"],
+                "detailed_specs": detailed,
+                "image_url": p["image_url"],
+                "scraped_at": p["scraped_at"],
+                "price_history": history
+            })
+            
+        conn.close()
+        
+        # Write to docs/products.json
+        output_dir = os.path.join(os.path.dirname(__file__), "docs")
+        os.makedirs(output_dir, exist_ok=True)
+        output_file = os.path.join(output_dir, "products.json")
+        
+        with open(output_file, "w", encoding="utf-8") as f:
+            json.dump(exported_products, f, ensure_ascii=False, indent=2)
+            
+        log_progress("export", 1, 1, f"Exportación exitosa. {len(exported_products)} productos guardados en docs/products.json.")
+        return True
+    except Exception as e:
+        log_progress("export", 0, 1, f"Error al exportar JSON: {str(e)}")
+        return False
 
 def main():
     parser = argparse.ArgumentParser(description="Raspador de productos de Winpy.cl")
@@ -568,6 +648,7 @@ def main():
     # Phase 3: Scrape product details
     if not args.crawl_only:
         scrape_queued_products()
+        export_to_json()
 
 if __name__ == "__main__":
     main()

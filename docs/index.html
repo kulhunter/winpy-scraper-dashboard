@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Winpy Product Database & Scraper Dashboard</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom Styling -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-logo">
+        <div class="logo-icon"><i class="fa-solid fa-database"></i></div>
+        <div class="logo-text">
+          <h1>WINPY<span>DB</span></h1>
+          <p>Comparador y Agrupador de Catálogo</p>
+        </div>
+      </div>
+      
+      <div class="header-stats">
+        <div class="stat-badge">
+          <span class="stat-label">Productos</span>
+          <span class="stat-val" id="stats-total-products">0</span>
+        </div>
+        <div class="stat-badge">
+          <span class="stat-label">Categorías</span>
+          <span class="stat-val" id="stats-categories">0 / 0</span>
+        </div>
+        <div class="stat-badge">
+          <span class="stat-label">Cola Sincro</span>
+          <span class="stat-val" id="stats-queue">0 / 0</span>
+        </div>
+      </div>
+
+      <div class="header-sync-status" id="scraper-indicator">
+        <span class="status-dot"></span>
+        <span class="status-text">Desconectado</span>
+      </div>
+    </header>
+
+    <!-- Main Navigation Tabs -->
+    <nav class="app-nav">
+      <button class="nav-btn active" data-tab="tab-table"><i class="fa-solid fa-table-list"></i> Catálogo Completo</button>
+      <button class="nav-btn" data-tab="tab-compare"><i class="fa-solid fa-code-compare"></i> Comparador (<span id="compare-count">0</span>)</button>
+      <button class="nav-btn" data-tab="tab-groupings"><i class="fa-solid fa-chart-pie"></i> Agrupaciones y Análisis</button>
+      <button class="nav-btn" data-tab="tab-scraper"><i class="fa-solid fa-circle-play"></i> Control de Sincronización</button>
+    </nav>
+
+    <!-- App Content Layout -->
+    <main class="app-main">
+      
+      <!-- TAB: Complete Table & Catalog -->
+      <section id="tab-table" class="tab-content active">
+        <div class="catalog-layout">
+          <!-- Sidebar Filters -->
+          <aside class="filters-sidebar">
+            <div class="sidebar-header">
+              <h3><i class="fa-solid fa-sliders"></i> Filtros de Búsqueda</h3>
+              <button class="btn-text-only" id="btn-clear-filters">Limpiar</button>
+            </div>
+            
+            <div class="filter-group">
+              <label for="filter-search">Buscar Producto</label>
+              <div class="search-input-wrapper">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="filter-search" placeholder="Buscar por título, SKU, marca...">
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <label for="filter-category">Categoría</label>
+              <select id="filter-category">
+                <option value="all">Todas las Categorías</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label>Marcas</label>
+              <div class="checkbox-list scrollable-small" id="brand-checkboxes-container">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <label>Condición</label>
+              <div class="flex-row gap-sm">
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="cond-nuevo" checked>
+                  <span>Nuevos</span>
+                </label>
+                <label class="custom-checkbox">
+                  <input type="checkbox" id="cond-usado" checked>
+                  <span>Usados</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <label>Disponibilidad</label>
+              <label class="custom-toggle">
+                <input type="checkbox" id="filter-stock-only">
+                <span class="toggle-slider"></span>
+                <span class="toggle-label">Solo con Stock</span>
+              </label>
+            </div>
+
+            <div class="filter-group">
+              <label>Rango de Precio Efectivo</label>
+              <div class="price-range-inputs">
+                <input type="number" id="price-min" placeholder="Min">
+                <span>-</span>
+                <input type="number" id="price-max" placeholder="Max">
+              </div>
+            </div>
+          </aside>
+
+          <!-- Table Container -->
+          <div class="table-results-container">
+            <div class="results-header">
+              <span class="results-count" id="filtered-products-count">Mostrando 0 productos</span>
+              <div class="results-actions">
+                <div class="sort-select-wrapper">
+                  <label for="sort-select">Ordenar por:</label>
+                  <select id="sort-select">
+                    <option value="discount-desc">Mayor Descuento</option>
+                    <option value="price-asc">Precio: Menor a Mayor</option>
+                    <option value="price-desc">Precio: Mayor a Menor</option>
+                    <option value="stock-desc">Mayor Stock</option>
+                    <option value="title-asc">Nombre A-Z</option>
+                  </select>
+                </div>
+                <button class="btn btn-secondary" id="btn-export-csv"><i class="fa-solid fa-file-csv"></i> Exportar CSV</button>
+              </div>
+            </div>
+
+            <div class="table-scroll-wrapper">
+              <table class="products-table" id="catalog-table">
+                <thead>
+                  <tr>
+                    <th width="40"><i class="fa-solid fa-check-double"></i></th>
+                    <th width="80">Foto</th>
+                    <th>Producto</th>
+                    <th>Marca</th>
+                    <th>Categoría</th>
+                    <th>Condición</th>
+                    <th class="text-right">Efectivo/Transf.</th>
+                    <th class="text-right">Tarjeta/Normal</th>
+                    <th class="text-center">Dcto.</th>
+                    <th class="text-center">Stock</th>
+                    <th width="60">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="catalog-table-body">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+            
+            <div class="no-results" id="catalog-no-results">
+              <i class="fa-solid fa-folder-open"></i>
+              <p>No se encontraron productos con los filtros seleccionados.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: Compare Products -->
+      <section id="tab-compare" class="tab-content">
+        <div class="compare-header-box">
+          <h2><i class="fa-solid fa-code-compare"></i> Comparación Comparativa</h2>
+          <p>Compara las características técnicas y precios de los productos seleccionados.</p>
+          <button class="btn btn-danger" id="btn-clear-compare"><i class="fa-solid fa-trash-can"></i> Limpiar Comparación</button>
+        </div>
+
+        <div class="compare-matrix-wrapper">
+          <div class="no-compare-selected" id="no-compare-box">
+            <i class="fa-solid fa-left-right"></i>
+            <h3>No hay suficientes productos seleccionados</h3>
+            <p>Selecciona al menos 2 productos en la pestaña de <strong>Catálogo Completo</strong> para verlos en esta comparativa.</p>
+            <button class="btn btn-primary" onclick="document.querySelector('[data-tab=tab-table]').click()"><i class="fa-solid fa-arrow-left"></i> Volver al Catálogo</button>
+          </div>
+          
+          <table class="compare-table" id="compare-matrix-table">
+            <!-- Dynamically populated -->
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB: Groupings and Statistics -->
+      <section id="tab-groupings" class="tab-content">
+        <div class="groupings-grid">
+          <!-- Left side: Summary Cards -->
+          <div class="stats-overview">
+            <div class="stats-card">
+              <h3><i class="fa-solid fa-tags"></i> Resumen de Catálogo</h3>
+              <div class="stats-card-grid">
+                <div class="mini-stat">
+                  <span class="val" id="stat-avg-price">$ 0</span>
+                  <span class="lbl">Precio Promedio</span>
+                </div>
+                <div class="mini-stat">
+                  <span class="val" id="stat-max-discount">0%</span>
+                  <span class="lbl">Descuento Máximo</span>
+                </div>
+                <div class="mini-stat">
+                  <span class="val" id="stat-total-stock">0</span>
+                  <span class="lbl">Unidades en Stock</span>
+                </div>
+                <div class="mini-stat">
+                  <span class="val" id="stat-avg-discount">0%</span>
+                  <span class="lbl">Descuento Promedio</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Group Selection -->
+            <div class="stats-card">
+              <h3><i class="fa-solid fa-layer-group"></i> Criterio de Agrupación</h3>
+              <div class="flex-row gap-md margin-top-sm">
+                <label class="custom-radio">
+                  <input type="radio" name="group-criterio" value="brand" checked>
+                  <span>Agrupar por Marca</span>
+                </label>
+                <label class="custom-radio">
+                  <input type="radio" name="group-criterio" value="category">
+                  <span>Agrupar por Categoría</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right side: Custom Visual SVG Charts -->
+          <div class="charts-card">
+            <h3><i class="fa-solid fa-chart-column"></i> Distribución de Productos</h3>
+            <div class="svg-chart-container" id="svg-chart-container">
+              <!-- Dynamically rendered SVG bar chart -->
+              <svg id="grouping-chart" width="100%" height="220"></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Extremos del Catálogo (Highlights) -->
+        <div class="highlights-grid">
+          <div class="highlight-list-card">
+            <h3><i class="fa-solid fa-arrow-trend-up" style="color: var(--accent-red)"></i> Más Caros</h3>
+            <ul id="list-most-expensive" class="highlight-ul"></ul>
+          </div>
+          <div class="highlight-list-card">
+            <h3><i class="fa-solid fa-arrow-trend-down" style="color: var(--accent-green)"></i> Más Baratos</h3>
+            <ul id="list-cheapest" class="highlight-ul"></ul>
+          </div>
+          <div class="highlight-list-card">
+            <h3><i class="fa-solid fa-cubes" style="color: var(--accent-cyan)"></i> Mayor Stock</h3>
+            <ul id="list-highest-stock" class="highlight-ul"></ul>
+          </div>
+          <div class="highlight-list-card">
+            <h3><i class="fa-solid fa-triangle-exclamation" style="color: var(--accent-orange)"></i> Stock Mínimo</h3>
+            <ul id="list-lowest-stock" class="highlight-ul"></ul>
+          </div>
+        </div>
+
+        <!-- Desglose por Categoría Detallado -->
+        <div class="category-analysis-card">
+          <h3><i class="fa-solid fa-magnifying-glass-chart"></i> Fichas de Análisis por Categoría</h3>
+          <p class="card-desc">Precio promedio, extremos y existencias detalladas para cada tipo de producto.</p>
+          <div class="category-cards-container" id="category-analysis-container">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Grouped Table Results -->
+        <div class="grouped-results-card">
+          <h3><i class="fa-solid fa-list-ol"></i> Tabla Resumen de Agrupación</h3>
+          <table class="grouped-table">
+            <thead>
+              <tr>
+                <th id="grouped-col-name">Grupo</th>
+                <th class="text-center">Cantidad de Productos</th>
+                <th class="text-right">Precio Mínimo</th>
+                <th class="text-right">Precio Promedio</th>
+                <th class="text-right">Precio Máximo</th>
+                <th class="text-center">Stock Total</th>
+                <th class="text-center">Descuento Promedio</th>
+              </tr>
+            </thead>
+            <tbody id="grouped-table-body">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB: Scraper Control Console -->
+      <section id="tab-scraper" class="tab-content">
+        <div class="scraper-grid">
+          <!-- Control Panel -->
+          <div class="scraper-control-card">
+            <h2><i class="fa-solid fa-gears"></i> Parámetros de Sincronización</h2>
+            <p class="card-desc">Inicia el proceso para extraer información del sitio web de Winpy.</p>
+            
+            <form id="scraper-form" class="scraper-form">
+              <div class="form-group">
+                <label for="scraper-filter">Filtrar por Categoría (Opcional)</label>
+                <input type="text" id="scraper-filter" placeholder="Ej: notebooks, tablet, memorias...">
+                <p class="input-help">Ingresa un término para sincronizar solo una sección y acelerar las pruebas.</p>
+              </div>
+
+              <div class="form-group">
+                <label>Modo de Sincronización</label>
+                <select id="scraper-mode">
+                  <option value="full">Completo (Descubrir y Extraer)</option>
+                  <option value="crawl-only">Solo Descubrir (Actualizar cola de URLs)</option>
+                  <option value="scrape-only">Solo Extraer (Procesar productos en cola)</option>
+                </select>
+              </div>
+
+              <div class="control-actions">
+                <button type="submit" class="btn btn-primary btn-block" id="btn-scraper-start">
+                  <i class="fa-solid fa-play"></i> Iniciar Sincronización
+                </button>
+                <button type="button" class="btn btn-danger btn-block" id="btn-scraper-stop" disabled>
+                  <i class="fa-solid fa-stop"></i> Detener
+                </button>
+              </div>
+            </form>
+
+            <div class="scraper-progress-box">
+              <div class="progress-labels">
+                <span class="progress-phase" id="progress-phase">Fase: Apagado</span>
+                <span class="progress-percent" id="progress-percent">0%</span>
+              </div>
+              <div class="progress-bar-wrapper">
+                <div class="progress-bar-fill" id="progress-bar-fill"></div>
+              </div>
+              <p class="progress-status-msg" id="progress-status-msg">Seleccione los parámetros y presione Iniciar.</p>
+            </div>
+          </div>
+
+          <!-- Logs Console -->
+          <div class="scraper-logs-card">
+            <div class="logs-header">
+              <h2><i class="fa-solid fa-terminal"></i> Consola del Extractor</h2>
+              <button class="btn btn-sm btn-secondary" id="btn-clear-logs">Limpiar Consola</button>
+            </div>
+            <div class="logs-console-body" id="logs-console">
+              <div class="log-line system">[SISTEMA] Listo para iniciar sincronización.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>WinpyDB Dashboard &copy; 2026 | Desarrollado para análisis y agrupamiento de catálogo.</p>
+    </footer>
+  </div>
+
+  <!-- PRODUCT DETAILS MODAL -->
+  <div class="modal-overlay" id="product-modal">
+    <div class="modal-card">
+      <button class="modal-close" id="btn-close-modal"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="modal-grid">
+        <!-- Left: Product Image & Basic Info -->
+        <div class="modal-left">
+          <div class="modal-image-wrapper">
+            <img id="modal-product-img" src="" alt="Imagen de producto">
+          </div>
+          
+          <div class="modal-condition-sku">
+            <span class="modal-badge-condition" id="modal-product-condition">Nuevo</span>
+            <span class="modal-sku-text">SKU: <strong id="modal-product-sku">---</strong></span>
+          </div>
+
+          <div class="modal-pricing-box">
+            <div class="modal-price-card cash">
+              <span class="price-type">Efectivo / Transferencia</span>
+              <span class="price-val" id="modal-price-cash">$ 0</span>
+            </div>
+            <div class="modal-price-card normal">
+              <span class="price-type">Otros Medios de Pago</span>
+              <span class="price-val" id="modal-price-normal">$ 0</span>
+            </div>
+          </div>
+
+          <div class="modal-stock-info">
+            <span id="modal-product-stock"><i class="fa-solid fa-cubes"></i> 0 unidades en stock</span>
+          </div>
+
+          <div class="modal-url-link">
+            <a id="modal-product-url" href="" target="_blank" class="btn btn-secondary btn-block">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Ver en Winpy.cl
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Technical Details Tabs -->
+        <div class="modal-right">
+          <div class="modal-right-header">
+            <h2 id="modal-product-title">Título del Producto</h2>
+            <p class="modal-brand-cat">Marca: <strong id="modal-product-brand">---</strong> | Categoría: <strong id="modal-product-cat">---</strong></p>
+          </div>
+
+          <div class="modal-tabs">
+            <button class="modal-tab-btn active" data-modal-tab="modal-tab-specs"><i class="fa-solid fa-microchip"></i> Ficha Técnica</button>
+            <button class="modal-tab-btn" data-modal-tab="modal-tab-history"><i class="fa-solid fa-chart-line"></i> Historial de Precios</button>
+            <button class="modal-tab-btn" data-modal-tab="modal-tab-raw-specs"><i class="fa-solid fa-list"></i> Specs Completas</button>
+          </div>
+
+          <!-- Modal TAB: Summary Specs -->
+          <div class="modal-tab-content active" id="modal-tab-specs">
+            <div class="spec-grid-cards">
+              <div class="spec-card">
+                <i class="fa-solid fa-cpu"></i>
+                <span class="spec-lbl">Procesador</span>
+                <span class="spec-val" id="modal-spec-proc">No especificado</span>
+              </div>
+              <div class="spec-card">
+                <i class="fa-solid fa-memory"></i>
+                <span class="spec-lbl">Memoria RAM</span>
+                <span class="spec-val" id="modal-spec-ram">No especificada</span>
+              </div>
+              <div class="spec-card">
+                <i class="fa-solid fa-hard-drive"></i>
+                <span class="spec-lbl">Almacenamiento</span>
+                <span class="spec-val" id="modal-spec-storage">No especificado</span>
+              </div>
+              <div class="spec-card">
+                <i class="fa-solid fa-window-maximize"></i>
+                <span class="spec-lbl">Sist. Operativo</span>
+                <span class="spec-val" id="modal-spec-os">No especificado</span>
+              </div>
+            </div>
+            
+            <div class="modal-quick-comparison-help">
+              <p><i class="fa-solid fa-circle-info"></i> Puedes agregar este producto al comparador desde el catálogo para contrastar estas especificaciones con otros modelos.</p>
+            </div>
+          </div>
+
+          <!-- Modal TAB: Price History -->
+          <div class="modal-tab-content" id="modal-tab-history">
+            <div class="history-section-wrapper">
+              <div class="history-chart-wrapper">
+                <!-- Mini SVG line chart for price history -->
+                <svg id="history-line-chart" width="100%" height="150" style="background:#17161b; border-radius:8px;"></svg>
+              </div>
+              <div class="history-table-wrapper">
+                <table class="modal-history-table">
+                  <thead>
+                    <tr>
+                      <th>Fecha</th>
+                      <th class="text-right">Precio Transf.</th>
+                      <th class="text-right">Precio Lista</th>
+                      <th class="text-center">Stock</th>
+                      <th>Tendencia</th>
+                    </tr>
+                  </thead>
+                  <tbody id="modal-history-table-body">
+                    <!-- Dynamically populated -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal TAB: Raw Table Specs -->
+          <div class="modal-tab-content" id="modal-tab-raw-specs">
+            <div class="raw-specs-search-wrapper">
+              <i class="fa-solid fa-filter"></i>
+              <input type="text" id="raw-specs-search" placeholder="Filtrar atributos técnicos...">
+            </div>
+            <div class="raw-specs-table-wrapper">
+              <table class="modal-raw-specs-table" id="modal-raw-specs-table">
+                <thead>
+                  <tr>
+                    <th>Atributo Técnico</th>
+                    <th>Especificación Detallada</th>
+                  </tr>
+                </thead>
+                <tbody id="modal-raw-specs-table-body">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Script logic -->
+  <script src="app.js"></script>
+</body>
+</html>

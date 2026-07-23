@@ -3,1014 +3,1572 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Propuesta Creativa Winpy 2026-2027 | rAio Studios</title>
-  <!-- Google Fonts -->
+  <title>Cajas Feas, Tech Hermosa — Propuesta Winpy 2026-2027 | rAio Studios</title>
+  <meta name="description" content="Propuesta de campaña estratégica para Winpy Chile. Dirección Creativa: Felipe Becerra | rAio Studios. Cannes-ready, Effie-focused, Chile real.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <!-- FontAwesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root {
-      --font-family: 'Outfit', sans-serif;
-      --bg-primary: #0a090d;
-      --bg-secondary: #121116;
-      --bg-tertiary: #19181f;
-      --border-color: rgba(255, 255, 255, 0.08);
-      
-      --accent-purple: #812cc9;
-      --accent-purple-light: #a64aff;
-      --accent-cyan: #00f0ff;
-      --accent-green: #00e676;
-      --accent-red: #ff1744;
-      --accent-orange: #ff9100;
-      
-      --text-main: #f3f3f5;
-      --text-muted: #9fa0a7;
+      --bg-0: #07060b;
+      --bg-1: #0e0d13;
+      --bg-2: #15141c;
+      --bg-3: #1d1c26;
+      --border: rgba(255,255,255,0.07);
+      --border-bright: rgba(255,255,255,0.15);
+      --purple: #8b34d4;
+      --purple-glow: rgba(139,52,212,.35);
+      --purple-light: #b060ff;
+      --cyan: #00e8ff;
+      --green: #00e676;
+      --orange: #ff9100;
+      --red: #ff1744;
+      --gold: #ffd700;
+      --text: #f2f1f6;
+      --muted: #9898a6;
+      --ff: 'Outfit', sans-serif;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: var(--font-family);
-      background-color: var(--bg-primary);
-      color: var(--text-main);
+      font-family: var(--ff);
+      background: var(--bg-0);
+      color: var(--text);
       display: flex;
       height: 100vh;
       overflow: hidden;
     }
 
-    /* Scrollbar */
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: var(--border-color);
-      border-radius: 3px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--accent-purple);
-    }
+    /* ─── SCROLLBARS ─────────────────────────────── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--purple); }
 
-    /* Sidebar Menu */
+    /* ─── SIDEBAR ─────────────────────────────────── */
     .sidebar {
-      width: 320px;
-      background-color: var(--bg-secondary);
-      border-right: 1px solid var(--border-color);
+      width: 280px;
+      flex-shrink: 0;
+      background: var(--bg-1);
+      border-right: 1px solid var(--border);
       display: flex;
       flex-direction: column;
-      height: 100%;
-      flex-shrink: 0;
+      height: 100vh;
+      overflow: hidden;
     }
 
-    .agency-branding {
-      padding: 2rem 1.5rem;
-      border-bottom: 1px solid var(--border-color);
-      display: flex;
+    .brand-block {
+      padding: 1.6rem 1.4rem 1.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand-badge {
+      display: inline-flex;
       align-items: center;
-      gap: 0.8rem;
-    }
-
-    .agency-logo-icon {
-      background: linear-gradient(135deg, var(--accent-purple), var(--accent-purple-light));
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.3rem;
-      box-shadow: 0 0 15px rgba(129, 44, 201, 0.4);
-    }
-
-    .agency-logo-text h2 {
-      font-size: 1.2rem;
+      gap: .5rem;
+      background: var(--purple);
+      color: #fff;
+      font-size: .7rem;
       font-weight: 800;
-      letter-spacing: 0.5px;
-    }
-    .agency-logo-text h2 span {
-      color: var(--accent-cyan);
-    }
-    .agency-logo-text p {
-      font-size: 0.75rem;
-      color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
+      padding: .3rem .7rem;
+      border-radius: 6px;
+      margin-bottom: .8rem;
+      box-shadow: 0 0 20px var(--purple-glow);
     }
 
-    .slide-menu {
+    .brand-name {
+      font-size: 1.35rem;
+      font-weight: 900;
+      line-height: 1.1;
+    }
+    .brand-name span { color: var(--cyan); }
+    .brand-sub {
+      font-size: .78rem;
+      color: var(--muted);
+      margin-top: .3rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+    }
+
+    .slide-nav {
       flex: 1;
       overflow-y: auto;
-      padding: 1.5rem 1rem;
+      padding: 1rem .8rem;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: .25rem;
     }
 
-    .menu-item {
+    .nav-section-label {
+      font-size: .65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      padding: .8rem .6rem .3rem;
+    }
+
+    .nav-btn {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
-      padding: 0.8rem 1rem;
-      border-radius: 10px;
-      color: var(--text-muted);
-      background: transparent;
+      gap: .75rem;
+      padding: .7rem .9rem;
+      border-radius: 9px;
       border: none;
-      font-family: var(--font-family);
-      font-size: 0.95rem;
+      background: transparent;
+      color: var(--muted);
+      font-family: var(--ff);
+      font-size: .88rem;
       font-weight: 500;
       text-align: left;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all .15s ease;
+      width: 100%;
+      position: relative;
     }
-
-    .menu-item:hover {
-      color: white;
-      background: rgba(255, 255, 255, 0.02);
+    .nav-btn i { font-size: 1rem; width: 20px; text-align: center; flex-shrink: 0; }
+    .nav-btn:hover { color: var(--text); background: var(--bg-2); }
+    .nav-btn.active {
+      color: #fff;
+      background: linear-gradient(135deg, var(--purple), #6b20a8);
+      box-shadow: 0 4px 14px var(--purple-glow);
     }
-
-    .menu-item.active {
-      color: white;
-      background: var(--accent-purple);
-      box-shadow: 0 4px 12px rgba(129, 44, 201, 0.25);
+    .nav-btn.active i { color: var(--cyan); }
+    .nav-btn .slide-num {
+      font-size: .65rem;
+      color: var(--muted);
+      margin-left: auto;
+      font-weight: 400;
     }
-
-    .menu-item i {
-      font-size: 1.1rem;
-      width: 24px;
-      text-align: center;
-    }
-
-    .menu-item.active i {
-      color: var(--accent-cyan);
-    }
+    .nav-btn.active .slide-num { color: rgba(255,255,255,.5); }
 
     .sidebar-footer {
-      padding: 1.5rem;
-      border-top: 1px solid var(--border-color);
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      text-align: center;
+      padding: 1rem 1.4rem;
+      border-top: 1px solid var(--border);
+      font-size: .72rem;
+      color: var(--muted);
     }
+    .sidebar-footer strong { color: var(--text); }
 
-    /* Content Area */
-    .content-area {
+    /* ─── CONTENT ─────────────────────────────────── */
+    .content {
       flex: 1;
-      height: 100%;
       overflow-y: auto;
-      padding: 3rem;
-      background: radial-gradient(circle at 80% 20%, #151021 0%, var(--bg-primary) 70%);
+      padding: 3.5rem 3.5rem 4rem;
+      background:
+        radial-gradient(ellipse 60% 50% at 85% 10%, #18103a 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 10% 90%, #0e1a2a 0%, transparent 60%),
+        var(--bg-0);
       position: relative;
     }
 
-    .slide-section {
-      display: none;
-      max-width: 960px;
-      margin: 0 auto;
-      animation: slideFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    .slide { display: none; max-width: 980px; margin: 0 auto; animation: fadeUp .35s ease; }
+    .slide.active { display: block; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0);    }
     }
 
-    .slide-section.active {
-      display: block;
-    }
-
-    @keyframes slideFadeIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Slides Elements */
+    /* ─── TYPOGRAPHY ──────────────────────────────── */
     .eyebrow {
-      color: var(--accent-cyan);
-      text-transform: uppercase;
-      font-weight: 700;
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      margin-bottom: 0.6rem;
       display: inline-block;
+      font-size: .73rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--cyan);
+      margin-bottom: .7rem;
     }
-
-    h1 {
-      font-size: 3rem;
+    .slide-title {
+      font-size: 2.8rem;
       font-weight: 900;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, white 40%, var(--text-muted));
+      line-height: 1.08;
+      margin-bottom: 1.4rem;
+      background: linear-gradient(160deg, #fff 40%, rgba(255,255,255,.45));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
-    .lead-text {
-      font-size: 1.25rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 2rem;
+    .slide-title.xl { font-size: 3.6rem; }
+    .lead {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 2.2rem;
       font-weight: 300;
+      max-width: 740px;
+    }
+    h3 { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: .5rem; }
+    h4 { font-size: .95rem; font-weight: 700; color: #fff; margin-bottom: .4rem; }
+
+    /* ─── GRIDS ───────────────────────────────────── */
+    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; margin-top: 1.4rem; }
+    .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.2rem; margin-top: 1.4rem; }
+    .g4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin-top: 1.4rem; }
+    @media (max-width: 860px) {
+      .g2, .g3, .g4 { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .g2, .g3, .g4 { grid-template-columns: 1fr; }
     }
 
-    /* Highlights & Cards */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 1.5rem;
+    /* ─── CARDS ───────────────────────────────────── */
+    .card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      transition: border-color .2s ease, transform .15s ease;
     }
+    .card:hover { border-color: rgba(139,52,212,.4); transform: translateY(-2px); }
+    .card.glow { box-shadow: 0 0 0 1px var(--purple), 0 8px 30px var(--purple-glow); border-color: var(--purple); }
+    .card p { font-size: .9rem; color: var(--muted); line-height: 1.55; margin-top: .5rem; }
 
-    @media (max-width: 768px) {
-      .grid-2 {
-        grid-template-columns: 1fr;
-      }
+    .card-icon {
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      margin-bottom: .8rem;
     }
+    .ci-purple { background: rgba(139,52,212,.15); color: var(--purple-light); }
+    .ci-cyan   { background: rgba(0,232,255,.10); color: var(--cyan); }
+    .ci-green  { background: rgba(0,230,118,.10); color: var(--green); }
+    .ci-orange { background: rgba(255,145,0,.10); color: var(--orange); }
+    .ci-red    { background: rgba(255,23,68,.10);  color: var(--red);    }
+    .ci-gold   { background: rgba(255,215,0,.08);  color: var(--gold);   }
 
-    .glass-card {
-      background: rgba(18, 17, 22, 0.6);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 1.8rem;
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-      transition: border-color 0.2s ease;
+    /* ─── STAT BLOBS ──────────────────────────────── */
+    .stat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin: 1.4rem 0; }
+    @media (max-width: 760px) { .stat-grid { grid-template-columns: 1fr 1fr; } }
+
+    .stat-blob {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.2rem 1rem;
+      text-align: center;
     }
-
-    .glass-card:hover {
-      border-color: rgba(129, 44, 201, 0.3);
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: .3rem;
+      background: linear-gradient(135deg, var(--purple-light), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
+    .stat-lbl { font-size: .72rem; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: .8px; }
 
-    .glass-card h3 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 0.8rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      color: white;
+    /* ─── QUOTE ───────────────────────────────────── */
+    .quote-block {
+      border-left: 3px solid var(--purple);
+      padding: 1rem 1.5rem;
+      margin: 2rem 0;
+      background: rgba(139,52,212,.06);
+      border-radius: 0 10px 10px 0;
     }
-
-    .glass-card h3 i {
-      color: var(--accent-cyan);
-    }
-
-    .glass-card p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .felipe-quote {
-      border-left: 3px solid var(--accent-purple);
-      padding-left: 1.5rem;
-      margin: 2.5rem 0;
-      position: relative;
-    }
-
-    .felipe-quote p {
-      font-size: 1.15rem;
+    .quote-block p {
+      font-size: 1.1rem;
       font-style: italic;
-      color: var(--text-main);
-      line-height: 1.6;
+      color: var(--text);
+      line-height: 1.65;
       font-weight: 300;
     }
-
-    .felipe-quote span {
-      display: block;
-      margin-top: 0.5rem;
-      font-size: 0.85rem;
+    .quote-attr {
+      margin-top: .5rem;
+      font-size: .78rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
-      color: var(--text-muted);
+      color: var(--muted);
     }
 
-    /* List styling */
-    .bullet-list {
-      list-style: none;
+    /* ─── BADGE AWARDS ────────────────────────────── */
+    .awards-row {
       display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-
-    .bullet-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.8rem;
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-
-    .bullet-list li i {
-      color: var(--accent-purple-light);
-      margin-top: 0.25rem;
-    }
-
-    .bullet-list li strong {
-      color: white;
-    }
-
-    /* Stunt Visualizer */
-    .pop-up-visualizer {
-      background: #111015;
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 2rem;
-      margin-top: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .gallery-preview {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      width: 100%;
       flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: 1.4rem;
     }
+    .award-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      padding: .3rem .7rem;
+      border-radius: 6px;
+    }
+    .ab-gold   { background: rgba(255,215,0,.12); color: var(--gold);   border: 1px solid rgba(255,215,0,.25); }
+    .ab-red    { background: rgba(255,23,68,.10);  color: var(--red);    border: 1px solid rgba(255,23,68,.2); }
+    .ab-cyan   { background: rgba(0,232,255,.08);  color: var(--cyan);   border: 1px solid rgba(0,232,255,.2); }
+    .ab-purple { background: rgba(139,52,212,.12); color: var(--purple-light); border: 1px solid rgba(139,52,212,.25); }
 
+    /* ─── BAR CHART ───────────────────────────────── */
+    .chart-wrap { background: var(--bg-2); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; margin-top: 1.4rem; overflow: hidden; }
+    .chart-title { font-size: .85rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; }
+    .bar-row { display: flex; align-items: center; gap: .8rem; margin-bottom: .65rem; }
+    .bar-label { font-size: .75rem; color: var(--muted); width: 160px; flex-shrink: 0; text-align: right; text-transform: uppercase; letter-spacing: .3px; }
+    .bar-track { flex: 1; background: var(--bg-3); border-radius: 4px; height: 18px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 4px; transition: width .8s cubic-bezier(.16,1,.3,1); display: flex; align-items: center; padding-left: 6px; }
+    .bar-val { font-size: .68rem; font-weight: 700; color: rgba(255,255,255,.8); white-space: nowrap; }
+
+    /* ─── OPPORTUNITY CARDS ───────────────────────── */
+    .opportunity-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-top: 1.2rem;
+    }
+    .opp-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.3rem 1.5rem;
+      display: flex;
+      gap: 1rem;
+      transition: border-color .2s, transform .15s;
+    }
+    .opp-card:hover { border-color: var(--purple); transform: translateY(-2px); }
+    .opp-num {
+      font-size: 2.2rem;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--border-bright);
+      flex-shrink: 0;
+      width: 44px;
+      text-align: right;
+    }
+    .opp-body h4 { font-size: .92rem; color: var(--cyan); font-weight: 700; margin-bottom: .3rem; }
+    .opp-body p  { font-size: .83rem; color: var(--muted); line-height: 1.5; }
+    .opp-tag {
+      display: inline-block;
+      font-size: .62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .7px;
+      padding: .15rem .5rem;
+      border-radius: 4px;
+      margin-bottom: .4rem;
+    }
+    .tag-b2c { background: rgba(0,232,255,.1); color: var(--cyan); }
+    .tag-b2b { background: rgba(139,52,212,.15); color: var(--purple-light); }
+    .tag-pr  { background: rgba(255,215,0,.1); color: var(--gold); }
+    .tag-data { background: rgba(0,230,118,.1); color: var(--green); }
+
+    /* ─── STUNT VISUAL ────────────────────────────── */
+    .gallery-strip {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      margin-top: 1.4rem;
+    }
     .pedestal {
-      background: #19181e;
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 10px;
-      padding: 1.2rem;
-      width: 160px;
+      background: var(--bg-3);
+      border: 1px dashed var(--orange);
+      border-radius: 12px;
+      padding: 1.2rem 1rem;
+      width: 155px;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.6rem;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-    }
-
-    .pedestal-box {
-      width: 90px;
-      height: 90px;
-      border: 2px dashed var(--accent-orange);
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      color: var(--accent-orange);
-      font-weight: 700;
-      background: rgba(255, 145, 0, 0.05);
+      gap: .6rem;
       position: relative;
     }
-
-    .pedestal-box::before {
+    .pedestal::before {
       content: 'CAJA FEA';
       position: absolute;
-      font-size: 9px;
-      top: -6px;
-      background: var(--accent-orange);
-      color: black;
-      padding: 1px 4px;
-      border-radius: 3px;
-    }
-
-    .pedestal-price {
-      font-size: 1.1rem;
+      top: -10px;
+      background: var(--orange);
+      color: #000;
+      font-size: .6rem;
       font-weight: 800;
-      color: var(--accent-green);
+      padding: 2px 8px;
+      border-radius: 4px;
+      letter-spacing: .5px;
     }
+    .pedestal-icon { font-size: 2.2rem; }
+    .pedestal-name { font-size: .72rem; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+    .pedestal-price { font-size: 1rem; font-weight: 800; color: var(--green); }
+    .pedestal-save { font-size: .68rem; color: var(--orange); font-weight: 700; }
 
-    .pedestal-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+    /* ─── BUDGET CALCULATOR ───────────────────────── */
+    .budget-wrap {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.8rem;
+      margin-top: 1.4rem;
     }
-
-    /* Interactive Budget Calculator */
-    .budget-calculator {
-      margin-top: 1.5rem;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 2rem;
-    }
-
-    .budget-slider-group {
+    .budget-row {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: .4rem;
       margin-bottom: 1.2rem;
     }
-
-    .budget-slider-header {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    .budget-slider-header span:last-child {
-      color: var(--accent-cyan);
-    }
-
-    .budget-slider-group input[type=range] {
+    .budget-header { display: flex; justify-content: space-between; align-items: center; }
+    .budget-header label { font-size: .85rem; font-weight: 600; color: var(--text); }
+    .budget-header .bval { font-size: .85rem; font-weight: 700; color: var(--cyan); }
+    input[type=range] {
       width: 100%;
-      accent-color: var(--accent-purple);
-      background: var(--bg-tertiary);
+      -webkit-appearance: none;
+      appearance: none;
       height: 6px;
+      background: var(--bg-3);
       border-radius: 3px;
+      outline: none;
       cursor: pointer;
     }
-
-    .budget-total-box {
-      border-top: 1px solid var(--border-color);
-      padding-top: 1.2rem;
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--purple);
+      border: 2px solid var(--purple-light);
+      box-shadow: 0 0 8px var(--purple-glow);
+      cursor: pointer;
+    }
+    .budget-divider { border-top: 1px solid var(--border); margin: 1.2rem 0; }
+    .budget-total-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 1.5rem;
     }
-
-    .budget-total-box h4 {
-      font-size: 1.2rem;
-      font-weight: 700;
-    }
-
-    .budget-total-val {
-      font-size: 1.8rem;
+    .budget-total-row h3 { font-size: 1rem; color: var(--muted); font-weight: 600; }
+    .total-num {
+      font-size: 2.2rem;
       font-weight: 900;
-      color: var(--accent-green);
+      color: var(--green);
+      transition: color .3s;
     }
+    .roas-row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+    .roas-box {
+      flex: 1;
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .roas-num { font-size: 1.6rem; font-weight: 900; margin-bottom: .2rem; }
+    .roas-lbl { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
 
-    /* Roadmap Timeline */
+    /* ─── KPI TABLE ───────────────────────────────── */
+    .kpi-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.4rem;
+    }
+    .kpi-table th {
+      padding: .8rem 1rem;
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      color: var(--muted);
+      background: var(--bg-2);
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      font-weight: 600;
+    }
+    .kpi-table td {
+      padding: .9rem 1rem;
+      font-size: .88rem;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+    }
+    .kpi-table tr:hover td { background: rgba(255,255,255,.02); }
+    .kpi-table .kpi-val { font-weight: 700; color: var(--green); }
+    .kpi-table .kpi-met { color: var(--cyan); font-weight: 600; }
+
+    /* ─── TIMELINE ────────────────────────────────── */
     .timeline {
       position: relative;
-      padding-left: 2rem;
+      padding-left: 2.2rem;
       margin-top: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
     }
-
     .timeline::before {
       content: '';
       position: absolute;
-      left: 6px;
-      top: 5px;
-      bottom: 5px;
+      left: 9px;
+      top: 8px;
+      bottom: 8px;
       width: 2px;
-      background: var(--border-color);
+      background: linear-gradient(to bottom, var(--purple), var(--cyan));
+      border-radius: 2px;
     }
-
-    .timeline-item {
-      position: relative;
-    }
-
-    .timeline-dot {
+    .tl-item { position: relative; margin-bottom: 1.8rem; }
+    .tl-dot {
       position: absolute;
-      left: -2rem;
-      top: 5px;
-      width: 14px;
-      height: 14px;
+      left: -2.2rem;
+      top: 4px;
+      width: 18px; height: 18px;
       border-radius: 50%;
-      background: var(--bg-primary);
-      border: 3px solid var(--accent-purple);
-      margin-left: -1px;
+      border: 3px solid var(--purple);
+      background: var(--bg-0);
+      display: flex; align-items: center; justify-content: center;
     }
-
-    .timeline-item.active .timeline-dot {
-      border-color: var(--accent-cyan);
-      box-shadow: 0 0 10px var(--accent-cyan);
-    }
-
-    .timeline-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: white;
-      margin-bottom: 0.3rem;
-    }
-
-    .timeline-desc {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    /* Interactive mockups */
-    .mockup-toggle-box {
-      background: #17161b;
-      border: 1px solid var(--border-color);
-      padding: 1.2rem;
-      border-radius: 10px;
-      max-width: 380px;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .mockup-header {
-      font-size: 0.8rem;
-      color: var(--text-muted);
+    .tl-item.phase2 .tl-dot { border-color: var(--cyan); }
+    .tl-item.phase3 .tl-dot { border-color: var(--green); }
+    .tl-item.phase4 .tl-dot { border-color: var(--gold); }
+    .tl-phase {
+      font-size: .68rem;
+      font-weight: 800;
       text-transform: uppercase;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      padding-bottom: 0.4rem;
+      letter-spacing: 1.2px;
+      color: var(--purple-light);
+      margin-bottom: .3rem;
+    }
+    .tl-item.phase2 .tl-phase { color: var(--cyan); }
+    .tl-item.phase3 .tl-phase { color: var(--green); }
+    .tl-item.phase4 .tl-phase { color: var(--gold); }
+    .tl-title { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .4rem; }
+    .tl-desc  { font-size: .85rem; color: var(--muted); line-height: 1.55; }
+    .tl-pills { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .6rem; }
+    .tl-pill {
+      font-size: .65rem;
+      font-weight: 700;
+      padding: .2rem .6rem;
+      border-radius: 5px;
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      color: var(--muted);
     }
 
-    .mockup-options {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
+    /* ─── TEAM CARDS ──────────────────────────────── */
+    .team-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      transition: all .2s;
     }
-
-    .mockup-option-row {
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 0.8rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      cursor: pointer;
-      user-select: none;
-      transition: all 0.15s ease;
-    }
-
-    .mockup-option-row.selected {
-      border-color: var(--accent-purple);
-      background: rgba(129, 44, 201, 0.05);
-    }
-
-    .mockup-radio {
-      width: 16px;
-      height: 16px;
+    .team-card:hover { border-color: var(--purple); }
+    .avatar {
+      width: 52px; height: 52px;
       border-radius: 50%;
-      border: 2px solid var(--text-muted);
+      background: linear-gradient(135deg, var(--purple), var(--cyan));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: white;
+      margin-bottom: .9rem;
+      font-size: 1.4rem;
+    }
+    .team-name { font-size: 1rem; font-weight: 800; color: #fff; }
+    .team-role { font-size: .72rem; color: var(--cyan); text-transform: uppercase; letter-spacing: .8px; margin-bottom: .6rem; font-weight: 600; }
+    .team-desc { font-size: .82rem; color: var(--muted); line-height: 1.5; }
+    .team-awards { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .8rem; }
+
+    /* ─── FLOW DIAGRAM ────────────────────────────── */
+    .flow-diagram {
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+      margin: 2rem 0;
+    }
+    .flow-node {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: .8rem 1.2rem;
+      text-align: center;
+      min-width: 130px;
+    }
+    .flow-node.highlight { border-color: var(--purple); background: rgba(139,52,212,.08); }
+    .flow-node span { display: block; font-size: .7rem; color: var(--muted); text-transform: uppercase; letter-spacing: .6px; }
+    .flow-node strong { font-size: .88rem; color: var(--text); font-weight: 700; }
+    .flow-arrow {
+      color: var(--muted);
+      font-size: 1.3rem;
+      padding: 0 .3rem;
     }
 
-    .mockup-option-row.selected .mockup-radio {
-      border-color: var(--accent-purple-light);
-    }
+    /* ─── UTILITY ─────────────────────────────────── */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+    .text-green  { color: var(--green) !important; }
+    .text-cyan   { color: var(--cyan) !important; }
+    .text-purple { color: var(--purple-light) !important; }
+    .text-orange { color: var(--orange) !important; }
+    .text-gold   { color: var(--gold) !important; }
+    .text-muted  { color: var(--muted) !important; }
 
-    .mockup-option-row.selected .mockup-radio::after {
-      content: '';
-      width: 8px;
-      height: 8px;
+    /* ─── COVER GLOW ──────────────────────────────── */
+    .cover-glow {
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
       border-radius: 50%;
-      background: var(--accent-purple-light);
+      background: radial-gradient(circle, rgba(139,52,212,.18) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
     }
+    .slide-content { position: relative; z-index: 1; }
 
-    .mockup-option-lbl {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
+    /* Slide navigation progress strip */
+    .progress-strip {
+      height: 2px;
+      background: var(--border);
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 280px;
+      right: 0;
+      z-index: 100;
     }
-
-    .mockup-option-title {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: white;
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--purple), var(--cyan));
+      transition: width .3s ease;
     }
-
-    .mockup-option-desc {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-    }
-
-    .mockup-option-price {
-      font-size: 0.95rem;
-      font-weight: 700;
-      text-align: right;
-    }
-
-    .mockup-option-price.discount {
-      color: var(--accent-green);
-    }
-
-    .badge-cannes {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: rgba(255,215,0,0.1);
-      color: #ffd700;
-      padding: 0.25rem 0.6rem;
-      border-radius: 4px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      border: 1px solid rgba(255,215,0,0.2);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 0.8rem;
-    }
-
-    /* SVG Map/Scatter mockup styling */
-    .scatter-chart-svg {
-      background: #111015;
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 1rem;
-    }
-
   </style>
 </head>
 <body>
 
-  <!-- Sidebar Menu -->
-  <aside class="sidebar">
-    <div class="agency-branding">
-      <div class="agency-logo-icon"><i class="fa-solid fa-bolt"></i></div>
-      <div class="agency-logo-text">
-        <h2>rAio<span>Studios</span></h2>
-        <p>Dirección Creativa</p>
+<!-- Progress strip -->
+<div class="progress-strip"><div class="progress-fill" id="progress-fill" style="width:7%"></div></div>
+
+<!-- ─────────────── SIDEBAR ─────────────── -->
+<aside class="sidebar">
+  <div class="brand-block">
+    <div class="brand-badge"><i class="fa-solid fa-bolt"></i> rAio Studios</div>
+    <div class="brand-name">Winpy<span> 2026</span></div>
+    <div class="brand-sub">Propuesta de Campaña Estratégica</div>
+  </div>
+
+  <nav class="slide-nav" id="slide-nav">
+    <div class="nav-section-label">Contexto</div>
+    <button class="nav-btn active" data-s="s01"><i class="fa-solid fa-door-open"></i> Portada <span class="slide-num">01</span></button>
+    <button class="nav-btn" data-s="s02"><i class="fa-solid fa-triangle-exclamation"></i> El Diagnóstico <span class="slide-num">02</span></button>
+    <button class="nav-btn" data-s="s03"><i class="fa-solid fa-database"></i> Datos del Catálogo <span class="slide-num">03</span></button>
+
+    <div class="nav-section-label">Estrategia</div>
+    <button class="nav-btn" data-s="s04"><i class="fa-solid fa-lightbulb"></i> Las 10 Oportunidades <span class="slide-num">04</span></button>
+    <button class="nav-btn" data-s="s05"><i class="fa-solid fa-fire"></i> La Gran Idea <span class="slide-num">05</span></button>
+    <button class="nav-btn" data-s="s06"><i class="fa-solid fa-store"></i> PR Stunt <span class="slide-num">06</span></button>
+
+    <div class="nav-section-label">Ejecución</div>
+    <button class="nav-btn" data-s="s07"><i class="fa-solid fa-laptop-code"></i> Estrategia Digital <span class="slide-num">07</span></button>
+    <button class="nav-btn" data-s="s08"><i class="fa-solid fa-robot"></i> Producción Sintética <span class="slide-num">08</span></button>
+    <button class="nav-btn" data-s="s09"><i class="fa-solid fa-route"></i> Roadmap 90 Días <span class="slide-num">09</span></button>
+
+    <div class="nav-section-label">Negocio</div>
+    <button class="nav-btn" data-s="s10"><i class="fa-solid fa-calculator"></i> Presupuesto <span class="slide-num">10</span></button>
+    <button class="nav-btn" data-s="s11"><i class="fa-solid fa-chart-line"></i> KPIs y ROI <span class="slide-num">11</span></button>
+    <button class="nav-btn" data-s="s12"><i class="fa-solid fa-users"></i> El Equipo <span class="slide-num">12</span></button>
+    <button class="nav-btn" data-s="s13"><i class="fa-solid fa-signature"></i> Cierre <span class="slide-num">13</span></button>
+  </nav>
+
+  <div class="sidebar-footer">
+    <strong>Felipe Becerra</strong><br>Director Creativo General<br>Ex Wunderman Thompson · Prolam Y&R
+  </div>
+</aside>
+
+<!-- ─────────────── CONTENT ─────────────── -->
+<main class="content">
+
+  <!-- ── 01: PORTADA ───────────────────────── -->
+  <section id="s01" class="slide active">
+    <div class="cover-glow"></div>
+    <div class="slide-content">
+      <div class="awards-row">
+        <span class="award-badge ab-gold"><i class="fa-solid fa-star"></i> Effie Contender</span>
+        <span class="award-badge ab-red"><i class="fa-solid fa-award"></i> Cannes Lions</span>
+        <span class="award-badge ab-cyan"><i class="fa-solid fa-trophy"></i> Lápiz de Platino</span>
+        <span class="award-badge ab-purple"><i class="fa-solid fa-medal"></i> ACHAP</span>
+      </div>
+      <span class="eyebrow">Propuesta Estratégica · rAio Studios · 2026-2027</span>
+      <div class="slide-title xl" style="margin-bottom:.5rem;">CAJAS FEAS,</div>
+      <div class="slide-title xl" style="color:var(--cyan); -webkit-text-fill-color:var(--cyan);">TECH HERMOSA</div>
+
+      <p class="lead">Cómo convertir el inventario con embalaje defectuoso de Winpy en la campaña de PR y ventas más honesta y disruptiva del retail tecnológico chileno en 2026.</p>
+
+      <div class="quote-block">
+        <p>"Llevo años ganando festivales en Prolam Y&R y Wunderman Thompson. He visto decenas de campañas hermosas que ganan en Cannes pero no venden nada en caja. Esta idea está pensada para hacer ambas cosas: romper el ruido mediático en Santiago y vaciar la bodega de Winpy. Es brutalmente honesta. Y eso, hoy, es lo más radical que puedes hacer."</p>
+        <div class="quote-attr">— Felipe Becerra, Director Creativo General · rAio Studios</div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-blob">
+          <div class="stat-num">1.623</div>
+          <div class="stat-lbl">Productos en Catálogo</div>
+        </div>
+        <div class="stat-blob">
+          <div class="stat-num">15</div>
+          <div class="stat-lbl">Categorías Activas</div>
+        </div>
+        <div class="stat-blob">
+          <div class="stat-num">$405K</div>
+          <div class="stat-lbl">Precio Promedio</div>
+        </div>
+        <div class="stat-blob">
+          <div class="stat-num">90</div>
+          <div class="stat-lbl">Días de Campaña</div>
+        </div>
       </div>
     </div>
-    
-    <nav class="slide-menu">
-      <button class="menu-item active" data-slide="slide-cover"><i class="fa-solid fa-folder-open"></i> Portada</button>
-      <button class="menu-item" data-slide="slide-challenge"><i class="fa-solid fa-triangle-exclamation"></i> La Tensión</button>
-      <button class="menu-item" data-slide="slide-idea"><i class="fa-solid fa-lightbulb"></i> La Gran Idea</button>
-      <button class="menu-item" data-slide="slide-stunt"><i class="fa-solid fa-store"></i> PR Stunt</button>
-      <button class="menu-item" data-slide="slide-digital"><i class="fa-solid fa-laptop-code"></i> Estrategia Digital</button>
-      <button class="menu-item" data-slide="slide-budget"><i class="fa-solid fa-calculator"></i> Presupuesto Estimado</button>
-      <button class="menu-item" data-slide="slide-kpis"><i class="fa-solid fa-chart-line"></i> Objetivos y KPIs</button>
-      <button class="menu-item" data-slide="slide-roadmap"><i class="fa-solid fa-route"></i> Roadmap 90 Días</button>
-      <button class="menu-item" data-slide="slide-closing"><i class="fa-solid fa-signature"></i> Equipo Creativo</button>
-    </nav>
+  </section>
 
-    <div class="sidebar-footer">
-      <p>Winpy Social Boost &copy; 2026</p>
+  <!-- ── 02: DIAGNÓSTICO ───────────────────── -->
+  <section id="s02" class="slide">
+    <span class="eyebrow">El Punto de Partida</span>
+    <div class="slide-title">EL DIAGNÓSTICO<br>DE MARCA</div>
+    <p class="lead">Winpy es un gigante logístico y comercial en Chile. Pero en digital, habla como una bodega silenciosa. El problema no es el producto. Es la forma en que lo comunicamos.</p>
+
+    <div class="g2">
+      <div class="card">
+        <div class="card-icon ci-red"><i class="fa-solid fa-volume-xmark"></i></div>
+        <h3>El Gigante Invisible</h3>
+        <p>Winpy mueve tecnología de clase mundial. Pero su voz en redes sociales se limita a publicar precios y especificaciones técnicas. El resultado es que el usuario no lo percibe como una marca; lo percibe como un catálogo.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon ci-orange"><i class="fa-solid fa-box-open"></i></div>
+        <h3>La Dictadura del Unboxing</h3>
+        <p>Las marcas tecnológicas gastan millones en empaques perfectos. Los creadores de contenido generan millones de vistas abriendo cajas. El cartón vale tanto como la máquina. Winpy puede romper esta absurdidad.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon ci-purple"><i class="fa-solid fa-piggy-bank"></i></div>
+        <h3>El 5% Invisible</h3>
+        <p>Winpy descuenta automáticamente un 5% al pagar con transferencia bancaria. En una laptop de $1.4M, son <strong>$70.000 CLP</strong>. Nadie lo sabe. No está comunicado como el beneficio masivo que realmente es.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon ci-cyan"><i class="fa-solid fa-warehouse"></i></div>
+        <h3>Stock Sin Historia</h3>
+        <p>La base de datos revela 52 unidades de UPS con ticket promedio de $867.000. Son productos de alto margen, difíciles de vender con una foto en Instagram. Necesitan un argumento narrativo, no un banner.</p>
+      </div>
     </div>
-  </aside>
 
-  <!-- Content Area -->
-  <main class="content-area">
-    
-    <!-- SLIDE: Cover -->
-    <section id="slide-cover" class="slide-section active">
-      <span class="eyebrow">PROPUESTA DE ACTIVACIÓN & PR STUNT 2026-2027</span>
-      <h1>CAJAS FEAS,<br>TECH HERMOSA</h1>
-      <p class="lead-text">Cómo convertir el inventario con embalaje defectuoso de Winpy en una declaración cultural sobre la honestidad, el consumo consciente y el ahorro real.</p>
-      
-      <div class="felipe-quote">
-        <p>"Llevo años ganando premios en Prolam Y&R y Wunderman Thompson. He visto decenas de campañas hermosas que ganan en Cannes pero no venden nada en caja. Esta idea está pensada para hacer ambas cosas: romper el ruido mediático de Santiago y vaciar la bodega de Winpy."</p>
-        <span>Felipe Becerra, Director Creativo General</span>
+    <div class="quote-block">
+      <p>"El mayor error de las marcas de retail tecnológico en Chile es creer que venden especificaciones. No. Venden certeza, velocidad y orgullo. Quien entienda eso primero, gana."</p>
+      <div class="quote-attr">— Felipe Becerra</div>
+    </div>
+  </section>
+
+  <!-- ── 03: DATOS DEL CATÁLOGO ────────────── -->
+  <section id="s03" class="slide">
+    <span class="eyebrow">Análisis de la Base de Datos Real · 1,623 productos</span>
+    <div class="slide-title">LOS DATOS MANDAN</div>
+    <p class="lead">Analizamos el catálogo completo de Winpy para identificar fortalezas, oportunidades de comunicación y segmentos de alta conversión.</p>
+
+    <div class="chart-wrap">
+      <div class="chart-title">Top Categorías por Cantidad de Productos</div>
+      <div id="cat-bars"></div>
+    </div>
+
+    <div class="g2" style="margin-top:1.4rem;">
+      <div class="chart-wrap" style="margin-top:0;">
+        <div class="chart-title">Top Marcas del Catálogo</div>
+        <div id="brand-bars"></div>
+      </div>
+      <div class="chart-wrap" style="margin-top:0;">
+        <div class="chart-title">Precio Promedio por Categoría (CLP)</div>
+        <div id="price-bars"></div>
+      </div>
+    </div>
+
+    <div class="stat-grid" style="margin-top:1.4rem;">
+      <div class="stat-blob">
+        <div class="stat-num" style="color:var(--cyan);">1.608</div>
+        <div class="stat-lbl">Productos Nuevos (99%)</div>
+      </div>
+      <div class="stat-blob">
+        <div class="stat-num" style="color:var(--orange);">14</div>
+        <div class="stat-lbl">Outlet / Usados / Dañados</div>
+      </div>
+      <div class="stat-blob">
+        <div class="stat-num" style="color:var(--green);">$1.421K</div>
+        <div class="stat-lbl">Ticket Promedio Laptops</div>
+      </div>
+      <div class="stat-blob">
+        <div class="stat-num" style="color:var(--purple-light);">$867K</div>
+        <div class="stat-lbl">Ticket Promedio UPS</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 04: LAS 10 OPORTUNIDADES ─────────── -->
+  <section id="s04" class="slide">
+    <span class="eyebrow">Estrategia de Contenido y Medios</span>
+    <div class="slide-title">LAS 10 OPORTUNIDADES<br>DE CAMPAÑA</div>
+    <p class="lead">Cruzando los datos del catálogo de 1,623 productos con el análisis del mercado digital chileno, identificamos diez vectores de alto impacto.</p>
+
+    <div class="opportunity-grid">
+
+      <div class="opp-card">
+        <div class="opp-num">01</div>
+        <div class="opp-body">
+          <span class="opp-tag tag-b2c">B2C</span>
+          <h4>El Hack del 5%</h4>
+          <p>El descuento por transferencia bancaria es un beneficio masivo mal comunicado. En laptops de $1.4M equivale a $70.000 CLP. Campaña de educación de compra inteligente con ROI demostrable.</p>
+        </div>
       </div>
 
-      <div class="grid-2">
-        <div class="glass-card">
-          <h3><i class="fa-solid fa-award"></i> ADN Effie + Cannes</h3>
-          <p>Una estrategia que aprovecha un dolor real de inventario (cajas dañadas) y lo eleva a una tensión cultural masiva sobre el desperdicio en la era del empaque de lujo.</p>
-        </div>
-        <div class="glass-card">
-          <h3><i class="fa-solid fa-gauge-high"></i> Performance Integrada</h3>
-          <p>El PR Stunt alimenta un ecosistema digital automatizado. Conectamos los anuncios dinámicos de Meta y Google directamente al stock físico de tu base de datos.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE: The Challenge -->
-    <section id="slide-challenge" class="slide-section">
-      <span class="eyebrow">EL DIAGNÓSTICO</span>
-      <h1>LA DICTADURA DEL EMOCIONANTE "UNBOXING"</h1>
-      <p class="lead-text">Vivimos en una cultura de consumo superficial. El unboxing es rey en TikTok y YouTube, pero el cartón se tira inmediatamente a la basura.</p>
-      
-      <div class="grid-2">
-        <div class="glass-card">
-          <h3><i class="fa-solid fa-boxes-stacked"></i> El Dato Real de Inventario</h3>
-          <p>Al analizar los <strong>1,623 productos</strong> del catálogo de Winpy en la base de datos, identificamos decenas de piezas de hardware de gama alta (Laptops, tarjetas gráficas ASUS, switches Ubiquiti) marcadas con "embalaje dañado" o "usados". Estos productos acumulan polvo en bodega a pesar de estar 100% nuevos e intactos de fábrica.</p>
-        </div>
-        <div class="glass-card">
-          <h3><i class="fa-solid fa-scale-unbalanced-flip"></i> La Tensión de Compra</h3>
-          <p>¿Por qué el consumidor chileno promedio debe pagar un 30% adicional por un notebook nuevo solo porque su caja de cartón sufrió una abolladura de 2cm en el camión? En un contexto económico ajustado, la apariencia del empaque se vuelve un impuesto ridículo.</p>
+      <div class="opp-card">
+        <div class="opp-num">02</div>
+        <div class="opp-body">
+          <span class="opp-tag tag-b2c">B2C</span>
+          <h4>Kits de Productividad "Freelance Pro"</h4>
+          <p>Logitech (56 productos) + Epson (71) + Laptops (72) = combos temáticos. El usuario no quiere comprar piezas; quiere trabajar. Vender soluciones completas eleva el ticket promedio.</p>
         </div>
       </div>
 
-      <div class="felipe-quote">
-        <p>"Nadie enciende una laptop y mira la caja para que corra más rápido. Los chips no leen cartón."</p>
-        <span>Felipe Becerra</span>
-      </div>
-    </section>
-
-    <!-- SLIDE: The Big Idea -->
-    <section id="slide-idea" class="slide-section">
-      <span class="eyebrow">LA PROPUESTA</span>
-      <h1>CAJAS FEAS, TECH HERMOSA</h1>
-      <p class="lead-text">Glorificaremos el empaque imperfecto. Crearemos una campaña institucional basada en la transparencia absoluta que resalte los productos defectuosos en su envoltorio pero impecables en su interior.</p>
-      
-      <div class="grid-2">
-        <div class="glass-card">
-          <h3><i class="fa-solid fa-circle-check"></i> Honestidad Radical</h3>
-          <p>Dejamos de esconder el outlet. Lo ponemos en el centro. Mostramos las cajas rotas con orgullo y le ponemos un sello: "Fea por fuera, Hermosa por dentro. Ahorro de $250.000".</p>
-        </div>
-        <div class="glass-card">
-          <h3><i class="fa-solid fa-leaf"></i> Enfoque Ecológico / Anti-Waste</h3>
-          <p>Nos aliamos con la tendencia de economía circular. Promovemos no botar productos a la basura o descartarlos por imperfecciones cosméticas en el cartón, conectando con el público joven.</p>
+      <div class="opp-card">
+        <div class="opp-num">03</div>
+        <div class="opp-body">
+          <span class="opp-tag tag-b2b">B2B</span>
+          <h4>PyME Segura: "Tu Local Protegido"</h4>
+          <p>Hikvision (86 prod.) + Dahua (51) + DVR/NVR (31). Campaña de seguridad para locales y emprendedores. No vendemos cámaras; vendemos tranquilidad el día que abren su negocio.</p>
         </div>
       </div>
 
-      <div class="pop-up-visualizer">
-        <h4>El Selector "Ugly Box" en el Checkout (Simulación)</h4>
-        <p class="card-desc">Modificaremos las fichas de productos en docs/app.js para mostrar esta opción de ahorro interactiva:</p>
-        
-        <div class="mockup-toggle-box">
-          <div class="mockup-header">Opciones de Empaque - Notebook ASUS ExpertBook</div>
-          <div class="mockup-options">
-            <div class="mockup-option-row" id="opt-perfect" onclick="toggleMockupOption('opt-perfect')">
-              <div class="mockup-radio"></div>
-              <div class="mockup-option-lbl">
-                <span class="mockup-option-title">Empaque Perfecto</span>
-                <span class="mockup-option-desc">Ideal para regalo o coleccionistas</span>
-              </div>
-              <span class="mockup-option-price">$ 549.632</span>
-            </div>
-            
-            <div class="mockup-option-row selected" id="opt-ugly" onclick="toggleMockupOption('opt-ugly')">
-              <div class="mockup-radio"></div>
-              <div class="mockup-option-lbl">
-                <span class="mockup-option-title">Caja Fea (Ugly Box)</span>
-                <span class="mockup-option-desc">Empaque dañado, máquina intacta</span>
-              </div>
-              <span class="mockup-option-price discount">$ 384.742</span>
-            </div>
+      <div class="opp-card">
+        <div class="opp-num">04</div>
+        <div class="opp-body">
+          <span class="opp-tag tag-b2c">B2C</span>
+          <h4>Chao Cartuchos: Campaña EcoTank</h4>
+          <p>Epson lidera con 71 productos. Campaña de ROI para familias y estudiantes: cuánto cuesta imprimir en 3 años con cartucho vs. EcoTank. El dato es devastadoramente favorable para Winpy.</p>
+        </div>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-num">05</div>
+        <div class="opp-body">
+          <span class="opp-tag tag-b2b">B2B</span>
+          <h4>Cero Cortes: UPS en Invierno</h4>
+          <p>52 UPS a $867K promedio. Activación de performance en tiempo real durante temporada de lluvias en Santiago. Anuncios programáticos activados por alertas meteorológicas de la ONEMI.</p>
+        </div>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-num">06</div>
+        <div class="opp-body">
+          <span class="opp-tag tag-b2c">B2C</span>
+          <h4>Apple vs Xiaomi: Dual Target</h4>
+          <p>Apple (32 prod., $1.07M) vs Xiaomi (28 prod., $419K). Segmentación de audiencias divergentes sin canibalizar tráfico. Creatividades emocionales versus racionales por segmento.</p>
+        </div>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-num">07</div>
+        <div class="opp-body">
+          <span class="opp-tag tag-b2c">B2C</span>
+          <h4>Revive tu Laptop: Campaña de Upgrades</h4>
+          <p>RAM (46), SSD (33), Procesadores (38). Cápsulas de 45 segundos mostrando cómo un cambio de disco multiplica por 10 la velocidad de una laptop vieja. Mercado masivo y de alta conversión.</p>
+        </div>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-num">08</div>
+        <div class="opp-body">
+          <span class="opp-tag tag-b2b">B2B</span>
+          <h4>Internet Sin Caídas (Ubiquiti B2B)</h4>
+          <p>Ubiquiti: segunda marca más grande (86 prod.). Campaña en LinkedIn para IT managers y co-works. El problema de 20 personas conectadas en una oficina pequeña tiene solución en Winpy.</p>
+        </div>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-num">09</div>
+        <div class="opp-body">
+          <span class="opp-tag tag-pr">PR Stunt</span>
+          <h4>Economía Circular: Tech Garage</h4>
+          <p>Outlet, Usados y Embalaje Dañado. Crear una sub-marca "Tech Garage" de Winpy. Diferencial frente a MercadoLibre: garantía de empresa, boleta, y una caja fea que nadie mira igual después del stunt.</p>
+        </div>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-num">10</div>
+        <div class="opp-body">
+          <span class="opp-tag tag-b2b">B2B</span>
+          <h4>Renting Tecnológico Corporativo</h4>
+          <p>Switches, UPS y servidores de alto ticket. Campaña para CFOs y Gerentes de Operaciones: convertir CAPEX en OPEX mensual. <em>"Equipa tu oficina hoy, paga sin descapitalizarte"</em>.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── 05: LA GRAN IDEA ──────────────────── -->
+  <section id="s05" class="slide">
+    <span class="eyebrow">La Campaña Madre 2026-2027</span>
+    <div class="slide-title">LA GRAN IDEA:<br><span style="color:var(--orange);">CAJAS FEAS,</span><br><span style="color:var(--cyan);">TECH HERMOSA</span></div>
+    <p class="lead">Glorificaremos el empaque imperfecto. Convertiremos el mayor problema de inventario de Winpy (los productos de embalaje dañado que nadie quiere comprar) en la campaña más honesta del retail chileno.</p>
+
+    <div class="g3">
+      <div class="card glow">
+        <div class="card-icon ci-orange"><i class="fa-solid fa-box-open"></i></div>
+        <h3>Honestidad Radical</h3>
+        <p>Dejamos de esconder el outlet. Lo ponemos al centro. Exhibimos las cajas más feas con orgullo y les ponemos un sello: <em>"Fea por fuera. Hermosa por dentro. Ahorro de $250.000."</em></p>
+      </div>
+      <div class="card">
+        <div class="card-icon ci-green"><i class="fa-solid fa-leaf"></i></div>
+        <h3>Anti-Waste Cultural</h3>
+        <p>Nos aliamos con la tendencia de economía circular. Un cartón golpeado no debería invalidar una máquina perfecta. La Generación Z lo entiende inmediatamente.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon ci-cyan"><i class="fa-solid fa-sack-dollar"></i></div>
+        <h3>Descuentos Reales</h3>
+        <p>El 25% al 40% de descuento por embalaje dañado transforma productos inmovilizados en el imán de tráfico más potente del catálogo, arrasstrando visitas al resto del stock.</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <h3 style="margin-bottom:1rem;">El Giro Creativo: El Selector "Ugly Box"</h3>
+    <p style="color:var(--muted); font-size:.9rem; margin-bottom:1.2rem;">En el checkout de la web de Winpy, agregamos una opción de selección de empaque por producto. El usuario escoge ahorrar:</p>
+
+    <div class="flow-diagram">
+      <div class="flow-node">
+        <span>Producto en Stock</span>
+        <strong>HP Laptop</strong>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <span>¿Estado del Empaque?</span>
+        <strong>Selector</strong>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node highlight">
+        <span>🎉 Caja Fea Elegida</span>
+        <strong>-35% Dcto</strong>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <span>Producto Idéntico</span>
+        <strong>Con Garantía</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 06: PR STUNT ──────────────────────── -->
+  <section id="s06" class="slide">
+    <div class="awards-row">
+      <span class="award-badge ab-gold"><i class="fa-solid fa-star"></i> PR Lion Contender</span>
+      <span class="award-badge ab-red"><i class="fa-solid fa-newspaper"></i> Earned Media Target</span>
+    </div>
+    <span class="eyebrow">Activación Física · Ñuñoa · 3 Días</span>
+    <div class="slide-title">THE WORST<br>UNBOXING IN THE WORLD</div>
+    <p class="lead">Una galería de arte efímera en el showroom de Winpy (Antonio Varas, Ñuñoa). Tres días. Pedestales iluminados. Las cajas más feas del catálogo exhibidas como joyería de alta tecnología.</p>
+
+    <div class="gallery-strip">
+      <div class="pedestal">
+        <div class="pedestal-icon">📦</div>
+        <div class="pedestal-name">HP EliteBook 840</div>
+        <div class="pedestal-price">-40%</div>
+        <div class="pedestal-save">Ahorro $560.000</div>
+      </div>
+      <div class="pedestal">
+        <div class="pedestal-icon">📦</div>
+        <div class="pedestal-name">ASUS ExpertBook B5</div>
+        <div class="pedestal-price">-35%</div>
+        <div class="pedestal-save">Ahorro $385.000</div>
+      </div>
+      <div class="pedestal">
+        <div class="pedestal-icon">📦</div>
+        <div class="pedestal-name">Ubiquiti UniFi Pro</div>
+        <div class="pedestal-price">-30%</div>
+        <div class="pedestal-save">Ahorro $72.000</div>
+      </div>
+      <div class="pedestal">
+        <div class="pedestal-icon">📦</div>
+        <div class="pedestal-name">Kingston SSD 2TB</div>
+        <div class="pedestal-price">-25%</div>
+        <div class="pedestal-save">Ahorro $66.000</div>
+      </div>
+      <div class="pedestal">
+        <div class="pedestal-icon">📦</div>
+        <div class="pedestal-name">Logitech MX Keys</div>
+        <div class="pedestal-price">-28%</div>
+        <div class="pedestal-save">Ahorro $35.000</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="g2">
+      <div class="card">
+        <div class="card-icon ci-red"><i class="fa-solid fa-envelope-open"></i></div>
+        <h3>El Peor Kit de Prensa</h3>
+        <p>Enviamos a <strong>15 líderes de opinión tech</strong> (periodistas, YouTubers, TikTokers) una caja espantosa envuelta en cinta de embalaje sucia y alambre. Al abrirla: hardware de última generación. La nota dice: <em>"La caja es horrible. El precio también. La tecnología es perfecta. De nada. Winpy."</em></p>
+      </div>
+      <div class="card">
+        <div class="card-icon ci-gold"><i class="fa-solid fa-tv"></i></div>
+        <h3>Despacho de Prensa Garantizado</h3>
+        <p>La galería física con pedestales iluminados y cajas rotas es contenido visual irresistible para TV, BioBio, Emol y LUN. Apuntamos a cobertura orgánica equivalente a <strong>$80M CLP en earned media</strong>, sin pagar ni un peso en pauta de prensa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 07: ESTRATEGIA DIGITAL ────────────── -->
+  <section id="s07" class="slide">
+    <span class="eyebrow">Performance & Media · Meta · Google · TikTok</span>
+    <div class="slide-title">EL ALGORITMO<br>DE LAS CAJAS TRISTES</div>
+    <p class="lead">El PR Stunt genera el ruido inicial. El verdadero volumen de ventas lo genera un ecosistema digital automatizado conectado directamente a los datos reales de stock de Winpy.</p>
+
+    <div class="g3">
+      <div class="card">
+        <div class="card-icon ci-cyan"><i class="fa-solid fa-crosshairs"></i></div>
+        <h3>Remarketing Dinámico de Ahorro</h3>
+        <p>Si un usuario ve una laptop en Winpy.cl y abandona el carrito, lo perseguimos en Meta y Google con la versión <em>Ugly Box</em> del mismo modelo: <em>"Ahorra $160.000 comprando la versión con caja fea."</em></p>
+      </div>
+      <div class="card">
+        <div class="card-icon ci-purple"><i class="fa-solid fa-cloud-sun-rain"></i></div>
+        <h3>Performance Climático (UPS)</h3>
+        <p>Anuncios programáticos para las 52 unidades de UPS que se activan automáticamente durante pronósticos de lluvia en Santiago. El contexto de emergencia convierte mejor que cualquier oferta.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon ci-green"><i class="fa-solid fa-mobile-screen"></i></div>
+        <h3>TikTok B2C: Hacks de Ahorro</h3>
+        <p>Cápsulas semanales de 15 segundos mostrando el hack del 5% en transfers, el upgrade de SSD y los kits de productividad. Tono de <em>"esto no te lo cuentan en el mall"</em>.</p>
+      </div>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">Mix de Medios Recomendado para Pauta Digital (% del presupuesto de media)</div>
+      <div id="media-mix-bars"></div>
+    </div>
+  </section>
+
+  <!-- ── 08: PRODUCCIÓN SINTÉTICA ──────────── -->
+  <section id="s08" class="slide">
+    <span class="eyebrow">Ventaja Competitiva de rAio Studios</span>
+    <div class="slide-title">CONTENIDO A<br>VELOCIDAD DE STOCK</div>
+    <p class="lead">Producir un commercial tradicional para cada producto de caja dañada que llegue a bodega es imposible. Con el motor de producción sintética de rAio Studios, cada producto nuevo activa automáticamente su propio video.</p>
+
+    <div class="flow-diagram" style="flex-direction:column; gap:1rem; align-items:flex-start; margin:1.8rem 0;">
+      <div style="display:flex; align-items:center; gap:.8rem; width:100%;">
+        <div class="flow-node" style="min-width:180px;"><span>Base de Datos Winpy</span><strong>Nuevo SKU Dañado</strong></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node highlight" style="min-width:200px;"><span>Motor IA rAio</span><strong>Guion Automático</strong></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node" style="min-width:160px;"><span>Avatar Presentador</span><strong>Video 15 seg</strong></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node" style="min-width:160px;"><span>Auto-publicación</span><strong>Reels + TikTok</strong></div>
+      </div>
+    </div>
+
+    <div class="g2">
+      <div class="card">
+        <div class="card-icon ci-purple"><i class="fa-solid fa-person-rays"></i></div>
+        <h3>El "Inspector de Cajas Feas"</h3>
+        <p>Creamos un presentador virtual: un personaje hiperrealista o pixel-art que "inspecciona" en cámara las cajas dañadas en bodega. Explica el golpe del cartón y el descuento que se genera. Tono: humor seco, irónico. Target: 25 a 40 años.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon ci-cyan"><i class="fa-solid fa-bolt"></i></div>
+        <h3>Velocidad de Reacción</h3>
+        <p>Desde que un producto se cataloga como "embalaje dañado" en la base de datos SQLite de Winpy hasta que su video de oferta está publicado en redes sociales: <strong>menos de 1 hora</strong>. Ninguna agencia tradicional puede competir con esto.</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+    <div class="stat-grid">
+      <div class="stat-blob">
+        <div class="stat-num">12</div>
+        <div class="stat-lbl">Reels por Semana</div>
+      </div>
+      <div class="stat-blob">
+        <div class="stat-num">1h</div>
+        <div class="stat-lbl">Tiempo de Producción</div>
+      </div>
+      <div class="stat-blob">
+        <div class="stat-num">$0</div>
+        <div class="stat-lbl">Costo Actores por Video</div>
+      </div>
+      <div class="stat-blob">
+        <div class="stat-num">90</div>
+        <div class="stat-lbl">Días de Producción Ininterrumpida</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 09: ROADMAP ───────────────────────── -->
+  <section id="s09" class="slide">
+    <span class="eyebrow">Plan de Implementación</span>
+    <div class="slide-title">ROADMAP<br>90 DÍAS</div>
+    <p class="lead">Una estructura por fases diseñada para blindar el canal digital antes de la temporada alta de Cyber Monday, Black Friday y Navidad en el Q4.</p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-phase">Fase 1 · Días 1 a 20</div>
+        <div class="tl-title">Diagnóstico e Integración de Datos</div>
+        <div class="tl-desc">Catalogamos todos los SKUs de embalaje dañado en la base de datos SQLite. Diseñamos el sistema visual "Cajas Feas" (Lesther Santander). Configuramos el selector Ugly Box en el checkout de Winpy.cl. Preparamos los kits de prensa para líderes de opinión.</div>
+        <div class="tl-pills">
+          <span class="tl-pill">Base de Datos</span>
+          <span class="tl-pill">UI/UX Checkout</span>
+          <span class="tl-pill">Sistema Visual</span>
+          <span class="tl-pill">Kit de Prensa</span>
+        </div>
+      </div>
+
+      <div class="tl-item phase2">
+        <div class="tl-dot"></div>
+        <div class="tl-phase">Fase 2 · Días 21 a 45</div>
+        <div class="tl-title">Lanzamiento del PR Stunt</div>
+        <div class="tl-desc">Inauguración de la Galería "Cartón Roto" en Ñuñoa. Envío de kits de prensa a creadores de contenido. Cobertura orgánica de medios (TV, portales, radio). Activación de las primeras campañas de Meta y Google.</div>
+        <div class="tl-pills">
+          <span class="tl-pill">Galería Física</span>
+          <span class="tl-pill">Prensa & PR</span>
+          <span class="tl-pill">Influencer Outreach</span>
+          <span class="tl-pill">Paid Media GO</span>
+        </div>
+      </div>
+
+      <div class="tl-item phase3">
+        <div class="tl-dot"></div>
+        <div class="tl-phase">Fase 3 · Días 46 a 75</div>
+        <div class="tl-title">Performance Automatizado y Producción IA</div>
+        <div class="tl-desc">Activación del motor de producción sintética. Reels semanales del "Inspector de Cajas Feas". Escalado del remarketing dinámico con datos de stock en tiempo real. Optimización del CPA.</div>
+        <div class="tl-pills">
+          <span class="tl-pill">Contenido Sintético</span>
+          <span class="tl-pill">Remarketing Dinámico</span>
+          <span class="tl-pill">Optimización CPA</span>
+          <span class="tl-pill">TikTok Launch</span>
+        </div>
+      </div>
+
+      <div class="tl-item phase4">
+        <div class="tl-dot"></div>
+        <div class="tl-phase">Fase 4 · Días 76 a 90</div>
+        <div class="tl-title">Blindaje Q4: Cyber, Black Friday y Navidad</div>
+        <div class="tl-desc">Campaña especial de Cyber Monday con inventario de Cajas Feas como oferta ancla. Extensión del concepto a productos regulares en Black Friday. Cierre de la temporada navideña con kits de regalo tecnológico.</div>
+        <div class="tl-pills">
+          <span class="tl-pill">Cyber Monday</span>
+          <span class="tl-pill">Black Friday</span>
+          <span class="tl-pill">Kits Navidad</span>
+          <span class="tl-pill">Reporte Final</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 10: PRESUPUESTO ───────────────────── -->
+  <section id="s10" class="slide">
+    <span class="eyebrow">Estimación Financiera Realista · Mercado Chileno 2026</span>
+    <div class="slide-title">INVERSIÓN TÁCTICA<br>90 DÍAS</div>
+    <p class="lead">Un presupuesto construido desde la realidad del retail tecnológico chileno. Ajusta los sliders para simular tu escenario de inversión óptimo:</p>
+
+    <div class="budget-wrap">
+
+      <div class="budget-row">
+        <div class="budget-header">
+          <label>Montaje Físico Galería "Cartón Roto" (Ñuñoa)</label>
+          <span class="bval" id="v-production">$12.000.000</span>
+        </div>
+        <input type="range" id="s-production" min="5000000" max="25000000" step="500000" value="12000000" oninput="calcBudget()">
+      </div>
+
+      <div class="budget-row">
+        <div class="budget-header">
+          <label>Fee Dirección Creativa + Estrategia (rAio Studios)</label>
+          <span class="bval" id="v-agency">$24.000.000</span>
+        </div>
+        <input type="range" id="s-agency" min="10000000" max="50000000" step="1000000" value="24000000" oninput="calcBudget()">
+      </div>
+
+      <div class="budget-row">
+        <div class="budget-header">
+          <label>Pauta Digital Pagada (Meta, Google, TikTok)</label>
+          <span class="bval" id="v-media">$35.000.000</span>
+        </div>
+        <input type="range" id="s-media" min="10000000" max="100000000" step="5000000" value="35000000" oninput="calcBudget()">
+      </div>
+
+      <div class="budget-row">
+        <div class="budget-header">
+          <label>Motor de Producción Sintética e IA (90 días)</label>
+          <span class="bval" id="v-synthetic">$9.000.000</span>
+        </div>
+        <input type="range" id="s-synthetic" min="3000000" max="20000000" step="500000" value="9000000" oninput="calcBudget()">
+      </div>
+
+      <div class="budget-row">
+        <div class="budget-header">
+          <label>Agencia de PR + Envío de Kits de Prensa</label>
+          <span class="bval" id="v-pr">$12.500.000</span>
+        </div>
+        <input type="range" id="s-pr" min="5000000" max="25000000" step="500000" value="12500000" oninput="calcBudget()">
+      </div>
+
+      <div class="budget-row">
+        <div class="budget-header">
+          <label>Desarrollo Web (Checkout Ugly Box + Dashboard)</label>
+          <span class="bval" id="v-dev">$7.500.000</span>
+        </div>
+        <input type="range" id="s-dev" min="3000000" max="20000000" step="500000" value="7500000" oninput="calcBudget()">
+      </div>
+
+      <div class="budget-divider"></div>
+
+      <div class="budget-total-row">
+        <div>
+          <h3 style="color:var(--muted); font-weight:600; font-size:.9rem; text-transform:uppercase; letter-spacing:.8px;">Total Estimado de Campaña (90 Días)</h3>
+          <p style="color:var(--muted); font-size:.78rem; margin-top:.2rem;">IVA no incluido · Cifras en Pesos Chilenos</p>
+        </div>
+        <div class="total-num" id="budget-total">$100.000.000</div>
+      </div>
+
+      <div class="roas-row">
+        <div class="roas-box">
+          <div class="roas-num text-green" id="roas-val">4.8x</div>
+          <div class="roas-lbl">ROAS Objetivo</div>
+        </div>
+        <div class="roas-box">
+          <div class="roas-num text-cyan" id="earned-val">$80M</div>
+          <div class="roas-lbl">Earned Media Estimado</div>
+        </div>
+        <div class="roas-box">
+          <div class="roas-num text-purple" id="revenue-val">$480M</div>
+          <div class="roas-lbl">Retorno en Ventas Estimado</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 11: KPIs ──────────────────────────── -->
+  <section id="s11" class="slide">
+    <span class="eyebrow">Business Case · El Slide del Effie</span>
+    <div class="slide-title">CÓMO GANAR<br>EL EFFIE DE ORO</div>
+    <p class="lead">Nuestra métrica primaria no son los likes. Son el retorno sobre la inversión, la limpieza del stock rezagado en bodega y el crecimiento de la base de clientes recurrentes de Winpy.</p>
+
+    <table class="kpi-table">
+      <thead>
+        <tr>
+          <th>Indicador</th>
+          <th>Línea Base (Actual)</th>
+          <th>Objetivo 90 Días</th>
+          <th>Métrica de Éxito</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Vaciado de Stock Outlet</strong></td>
+          <td>14 productos estancados</td>
+          <td class="kpi-val">0 en bodega</td>
+          <td class="kpi-met">Tiempo en bodega &lt; 3 días</td>
+        </tr>
+        <tr>
+          <td><strong>ROAS Pauta Digital</strong></td>
+          <td>Estimado 1.5x - 2x</td>
+          <td class="kpi-val">4.8x</td>
+          <td class="kpi-met">Google Analytics / Meta Ads</td>
+        </tr>
+        <tr>
+          <td><strong>Tráfico Orgánico Web</strong></td>
+          <td>Línea base actual</td>
+          <td class="kpi-val">+45%</td>
+          <td class="kpi-met">Google Search Console</td>
+        </tr>
+        <tr>
+          <td><strong>Costo de Adquisición (CPA)</strong></td>
+          <td>Estimado $35.000+</td>
+          <td class="kpi-val">-25% (≈ $26.000)</td>
+          <td class="kpi-met">Meta Ads Manager</td>
+        </tr>
+        <tr>
+          <td><strong>Cobertura de Prensa (EMV)</strong></td>
+          <td>$0 earned</td>
+          <td class="kpi-val">$80.000.000 CLP</td>
+          <td class="kpi-met">Monitoreo de menciones</td>
+        </tr>
+        <tr>
+          <td><strong>Ventas Categoría Outlet</strong></td>
+          <td>Stock paralizado</td>
+          <td class="kpi-val">+180%</td>
+          <td class="kpi-met">Reporte de ventas Winpy</td>
+        </tr>
+        <tr>
+          <td><strong>Seguidores / Comunidad</strong></td>
+          <td>Línea base actual</td>
+          <td class="kpi-val">+30%</td>
+          <td class="kpi-met">Instagram / TikTok Analytics</td>
+        </tr>
+        <tr>
+          <td><strong>Ticket Promedio por Pedido</strong></td>
+          <td>$405.000 CLP</td>
+          <td class="kpi-val">+20% ($486.000)</td>
+          <td class="kpi-met">Ecommerce analytics</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="quote-block" style="margin-top:2rem;">
+      <p>"Los Effies se ganan demostrando que un dolor real de la empresa se resolvió con creatividad, bajando el costo de adquisición y subiendo las ventas. No ganamos por tener el video más bonito. Ganamos por tener el negocio que más creció."</p>
+      <div class="quote-attr">— Felipe Becerra</div>
+    </div>
+  </section>
+
+  <!-- ── 12: EL EQUIPO ─────────────────────── -->
+  <section id="s12" class="slide">
+    <span class="eyebrow">Equipo Asignado</span>
+    <div class="slide-title">LOS QUE VAN<br>A HACER QUE PASE</div>
+    <p class="lead">Un equipo multidisciplinario con trayectoria comprobada en producción digital, creatividad estratégica y performance para el mercado latinoamericano.</p>
+
+    <div class="g2">
+      <div class="team-card">
+        <div class="avatar">FB</div>
+        <div class="team-name">Felipe Becerra</div>
+        <div class="team-role">Director Creativo General</div>
+        <div class="team-desc">Ex-Wunderman Thompson y Prolam Young & Rubicam Chile. Responsable de conceptos de marca, tono y guiones de campaña. Especialista en ideas que funcionan tanto en festivales de premios como en cajas registradoras.</div>
+        <div class="team-awards">
+          <span class="award-badge ab-gold" style="font-size:.6rem;">Effie Oro</span>
+          <span class="award-badge ab-red" style="font-size:.6rem;">Cannes Lions</span>
+          <span class="award-badge ab-cyan" style="font-size:.6rem;">Lápiz Platino</span>
+          <span class="award-badge ab-purple" style="font-size:.6rem;">ACHAP</span>
+          <span class="award-badge ab-gold" style="font-size:.6rem;">El Ojo</span>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="avatar">MA</div>
+        <div class="team-name">Mónica Arancibia</div>
+        <div class="team-role">Planificación Estratégica</div>
+        <div class="team-desc">Diseño de grillas editoriales, análisis de datos del catálogo SQLite y segmentación de audiencias para las campañas dinámicas. El cerebro detrás del mix de medios.</div>
+        <div class="team-awards">
+          <span class="award-badge ab-cyan" style="font-size:.6rem;">Media Strategist</span>
+          <span class="award-badge ab-purple" style="font-size:.6rem;">Data & Analytics</span>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="avatar">LS</div>
+        <div class="team-name">Lesther Santander</div>
+        <div class="team-role">Dirección de Arte y Diseño Visual</div>
+        <div class="team-desc">Creador del sistema gráfico "Cajas Feas", layouts del pop-up físico en Ñuñoa y animaciones para pauta digital. Especialista en diseño de alto impacto para retail.</div>
+        <div class="team-awards">
+          <span class="award-badge ab-gold" style="font-size:.6rem;">Art Director</span>
+          <span class="award-badge ab-red" style="font-size:.6rem;">Motion Design</span>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="avatar">CH</div>
+        <div class="team-name">Carolina Herreros</div>
+        <div class="team-role">Directora de Cuentas</div>
+        <div class="team-desc">Liderazgo del proyecto, coordinación de entregables y nexo operativo directo con Patricio y el equipo comercial de Winpy. Garantiza que los plazos se respeten sin excepciones.</div>
+        <div class="team-awards">
+          <span class="award-badge ab-cyan" style="font-size:.6rem;">Account Director</span>
+          <span class="award-badge ab-purple" style="font-size:.6rem;">Retail Tech</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 13: CIERRE ────────────────────────── -->
+  <section id="s13" class="slide">
+    <span class="eyebrow">Por Qué Esta Campaña Funciona</span>
+    <div class="slide-title">¿HACEMOS<br>RUIDO, PATRICIO?</div>
+    <p class="lead">Hay tres razones por las cuales "Cajas Feas, Tech Hermosa" es una idea redonda para Winpy. Y solo una razón por la que podría fallar.</p>
+
+    <div class="g3">
+      <div class="card glow">
+        <div class="card-icon ci-green"><i class="fa-solid fa-handshake"></i></div>
+        <h3>1. Es Brutalmente Honesta</h3>
+        <p>En un mercado lleno de promesas exageradas, nosotros salimos a decir: <em>"nuestra caja está rota, pero la máquina vuela. Llévatela barata"</em>. Eso genera confianza inmediata y posiciona a Winpy como una marca humana y transparente.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon ci-cyan"><i class="fa-solid fa-chart-pie"></i></div>
+        <h3>2. Es un Negocio Redondo</h3>
+        <p>Resuelve un problema financiero real: mover stock estancado que el equipo comercial no sabe cómo vender, y lo convierte en un imán de tráfico que arrastra visitas al resto del catálogo de 1,623 productos.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon ci-orange"><i class="fa-solid fa-newspaper"></i></div>
+        <h3>3. Es PR Puro</h3>
+        <p>LUN, Emol, BioBio y los canales de TV amarán cubrir la apertura de la "tienda de cartones abollados" en Ñuñoa. Es contenido visual y narrativamente irresistible para los medios. Cobertura gratuita garantizada.</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="quote-block">
+      <p>"La única razón por la que esta campaña podría fallar es que no la hagamos. Todo lo demás ya está resuelto: el insight es real, el producto existe, el presupuesto es realista y el equipo está listo. Ahora la pregunta es si Winpy quiere seguir siendo una bodega silenciosa o quiere convertirse en la marca de tecnología más honesta de Chile."</p>
+      <div class="quote-attr">— Felipe Becerra, Director Creativo General · rAio Studios</div>
+    </div>
+
+    <div class="stat-grid" style="margin-top:2rem;">
+      <div class="stat-blob">
+        <div class="stat-num text-green">+180%</div>
+        <div class="stat-lbl">Ventas Outlet Target</div>
+      </div>
+      <div class="stat-blob">
+        <div class="stat-num text-cyan">4.8x</div>
+        <div class="stat-lbl">ROAS Objetivo</div>
+      </div>
+      <div class="stat-blob">
+        <div class="stat-num text-gold">$80M</div>
+        <div class="stat-lbl">Earned Media</div>
+      </div>
+      <div class="stat-blob">
+        <div class="stat-num text-purple">90</div>
+        <div class="stat-lbl">Días Para Cambiar Todo</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // ─── SLIDE NAVIGATION ──────────────────────
+  const TOTAL_SLIDES = 13;
+  const navBtns = document.querySelectorAll('.nav-btn');
+  const slides  = document.querySelectorAll('.slide');
+  const progressFill = document.getElementById('progress-fill');
+
+  function gotoSlide(id) {
+    navBtns.forEach(b => b.classList.remove('active'));
+    slides.forEach(s => s.classList.remove('active'));
+    const targetBtn   = document.querySelector(`[data-s="${id}"]`);
+    const targetSlide = document.getElementById(id);
+    if (!targetBtn || !targetSlide) return;
+    targetBtn.classList.add('active');
+    targetSlide.classList.add('active');
+    // scroll content top
+    document.querySelector('.content').scrollTop = 0;
+    // update progress
+    const num = parseInt(id.replace('s',''));
+    progressFill.style.width = `${Math.round((num/TOTAL_SLIDES)*100)}%`;
+    // draw charts if needed
+    if (id === 's03') drawDataCharts();
+    if (id === 's07') drawMediaMix();
+    targetBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  navBtns.forEach(btn => btn.addEventListener('click', () => gotoSlide(btn.dataset.s)));
+
+  // ─── BAR CHART HELPER ──────────────────────
+  function makeBar(label, value, maxVal, color, format) {
+    const pct = Math.round((value / maxVal) * 100);
+    const displayVal = format === 'money'
+      ? '$' + (value/1000).toFixed(0) + 'K'
+      : value.toString();
+    return `
+      <div class="bar-row">
+        <span class="bar-label">${label}</span>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:${pct}%; background:${color};">
+            <span class="bar-val">${displayVal}</span>
           </div>
         </div>
-      </div>
-    </section>
+      </div>`;
+  }
 
-    <!-- SLIDE: Stunt Activation -->
-    <section id="slide-stunt" class="slide-section">
-      <span class="eyebrow">EL HITO DE RELACIONES PÚBLICAS</span>
-      <span class="badge-cannes"><i class="fa-solid fa-star"></i> Cannes Contender</span>
-      <h1>THE WORST UNBOXING IN THE WORLD</h1>
-      <p class="lead-text">Montaremos una galería de arte física efímera en Antonio Varas 2223 (Ñuñoa). Expondremos las cajas más feas de nuestro catálogo como joyas de colección.</p>
+  function drawDataCharts() {
+    // Categories by product count (real data)
+    const cats = [
+      { n:'Notebooks',        v:72  },
+      { n:'Switch',           v:62  },
+      { n:'Accesorios',       v:59  },
+      { n:'Cartuchos Tinta',  v:57  },
+      { n:'UPS',              v:52  },
+      { n:'Cámaras Vigil.',   v:52  },
+      { n:'Cable de Red',     v:51  },
+      { n:'Access Point',     v:51  },
+      { n:'RAM',              v:46  },
+      { n:'Procesadores',     v:38  },
+    ];
+    const maxCat = Math.max(...cats.map(c=>c.v));
+    const catColors = ['#8b34d4','#7a28c0','#6b1fad','#5f18a0','#541395','#491088','#3f0d7c','#350b70','#2c0965','#240758'];
+    document.getElementById('cat-bars').innerHTML = cats.map((c,i) => makeBar(c.n, c.v, maxCat, catColors[i], 'count')).join('');
 
-      <div class="grid-2">
-        <div class="glass-card">
-          <h3><i class="fa-solid fa-gem"></i> Galería "El Cartón Roto"</h3>
-          <p>Los clientes entrarán a una sala oscura, minimalista, con pedestales iluminados. Cada pedestal tendrá una caja abollada y rota. Bajo ella, una pantalla indicará el descuento masivo del producto que está adentro. El contraste visual es irresistible para la prensa y las cámaras.</p>
-        </div>
-        <div class="glass-card">
-          <h3><i class="fa-solid fa-truck-ramp-box"></i> El Peor Kit de Prensa</h3>
-          <p>Enviaremos a 15 periodistas y creadores de tecnología (como Doctor Datazo y editores de portales de noticias) cajas envueltas en cinta de embalaje sucia y alambre de púas. Al abrir la horrible caja, encontrarán un hardware de última generación con una nota de Winpy retándolos a hacer el unboxing.</p>
-        </div>
-      </div>
+    // Brands
+    const brands = [
+      { n:'HP',       v:89 },
+      { n:'Ubiquiti', v:86 },
+      { n:'Hikvision',v:86 },
+      { n:'Kingston', v:71 },
+      { n:'Epson',    v:71 },
+      { n:'Brother',  v:64 },
+      { n:'Asus',     v:56 },
+      { n:'Logitech', v:56 },
+    ];
+    const maxBrand = Math.max(...brands.map(b=>b.v));
+    const brandColors = ['#00e8ff','#00cbe0','#00afc2','#0094a5','#007a88','#00626e','#004c55','#00373d'];
+    document.getElementById('brand-bars').innerHTML = brands.map((b,i) => makeBar(b.n, b.v, maxBrand, brandColors[i], 'count')).join('');
 
-      <div class="pop-up-visualizer">
-        <h4>Visualización del PR Stunt (Showroom Ñuñoa)</h4>
-        <div class="gallery-preview">
-          <div class="pedestal">
-            <div class="pedestal-box">📦</div>
-            <span class="pedestal-label">HP Laptop</span>
-            <span class="pedestal-price">-35% Dcto</span>
-          </div>
-          <div class="pedestal">
-            <div class="pedestal-box">📦</div>
-            <span class="pedestal-label">RTX 5090</span>
-            <span class="pedestal-price">-25% Dcto</span>
-          </div>
-          <div class="pedestal">
-            <div class="pedestal-box">📦</div>
-            <span class="pedestal-label">Router Ubiquiti</span>
-            <span class="pedestal-price">-40% Dcto</span>
-          </div>
-        </div>
-      </div>
-    </section>
+    // Avg price by category
+    const prices = [
+      { n:'Notebooks',  v:1421369 },
+      { n:'UPS',        v:867031  },
+      { n:'Celulares',  v:684295  },
+      { n:'Procesadores',v:573120 },
+      { n:'Asus Brand', v:644361  },
+      { n:'RAM',        v:315063  },
+      { n:'DVR/NVR',    v:330164  },
+      { n:'Accesorios', v:116921  },
+    ];
+    const maxPrice = Math.max(...prices.map(p=>p.v));
+    const priceColors = ['#00e676','#00cc68','#00b35a','#009a4d','#008240','#006b34','#005428','#003e1d'];
+    document.getElementById('price-bars').innerHTML = prices.map((p,i) => makeBar(p.n, p.v, maxPrice, priceColors[i], 'money')).join('');
+  }
 
-    <!-- SLIDE: Digital Strategy -->
-    <section id="slide-digital" class="slide-section">
-      <span class="eyebrow">ECOSISTEMA DIGITAL Y MEDIOS</span>
-      <h1>EL ALGORITMO DE LAS CAJAS TRISTES</h1>
-      <p class="lead-text">La activación física genera el ruido de PR. Pero las ventas masivas las realizaremos con pauta inteligente automatizada conectada directamente al stock de la base de datos de Winpy.</p>
+  function drawMediaMix() {
+    const mix = [
+      { n:'Meta Ads (Instagram/FB)', v:40 },
+      { n:'Google Performance Max',  v:28 },
+      { n:'TikTok Ads',              v:18 },
+      { n:'LinkedIn (B2B)',           v:8  },
+      { n:'YouTube Pre-roll',        v:6  },
+    ];
+    const maxM = Math.max(...mix.map(m=>m.v));
+    const mixColors = ['#8b34d4','#00e8ff','#ff1744','#0077b5','#ff0000'];
+    document.getElementById('media-mix-bars').innerHTML = mix.map((m,i) => makeBar(m.n + ' (' + m.v + '%)', m.v, maxM, mixColors[i], 'pct')).join('');
+  }
 
-      <div class="grid-2">
-        <div class="glass-card">
-          <h3><i class="fa-solid fa-robot"></i> Automatización de Video con IA</h3>
-          <p>Usando el motor de producción sintética de rAio Studios, crearemos un <strong>Inspector de Cajas Feas</strong> (un presentador virtual). El sistema detectará automáticamente cuando un producto "Caja Fea" se agregue a la cola de SQLite, armará un guion divertido y renderizará un video de oferta de 15 segundos para Reels y TikTok en minutos.</p>
-        </div>
-        <div class="glass-card">
-          <h3><i class="fa-solid fa-retargeting"></i> Remarketing Dinámico de Ahorro</h3>
-          <p>Si un usuario busca una laptop ASUS ExpertBook en la web y la abandona, le impactaremos con un banner dinámico mostrando la misma máquina pero en versión "Ugly Box" con el descuento de caja dañada: <em>"Ahorra $160.000 comprando la versión con caja fea"</em>.</p>
-        </div>
-      </div>
+  // ─── BUDGET CALCULATOR ─────────────────────
+  function fmt(n) {
+    return '$' + n.toLocaleString('es-CL');
+  }
 
-      <div class="felipe-quote">
-        <p>"No gastamos en contratar actores ni locutores para cada pieza. Con la IA de rAio, transformamos la base de datos de Winpy en un comercial automatizado en tiempo real."</p>
-        <span>Felipe Becerra</span>
-      </div>
-    </section>
+  function calcBudget() {
+    const prod  = +document.getElementById('s-production').value;
+    const ag    = +document.getElementById('s-agency').value;
+    const med   = +document.getElementById('s-media').value;
+    const syn   = +document.getElementById('s-synthetic').value;
+    const pr    = +document.getElementById('s-pr').value;
+    const dev   = +document.getElementById('s-dev').value;
 
-    <!-- SLIDE: Budget -->
-    <section id="slide-budget" class="slide-section">
-      <span class="eyebrow">ESTIMACIÓN PRESUPUESTARIA 2026-2027</span>
-      <h1>INVERSIÓN TÁCTICA PARA 90 DÍAS</h1>
-      <p class="lead-text">Un presupuesto realista, transparente y medido para el mercado chileno. Ajusta los valores para simular escenarios de inversión:</p>
+    document.getElementById('v-production').textContent = fmt(prod);
+    document.getElementById('v-agency').textContent     = fmt(ag);
+    document.getElementById('v-media').textContent      = fmt(med);
+    document.getElementById('v-synthetic').textContent  = fmt(syn);
+    document.getElementById('v-pr').textContent         = fmt(pr);
+    document.getElementById('v-dev').textContent        = fmt(dev);
 
-      <div class="budget-calculator">
-        <div class="budget-slider-group">
-          <div class="budget-slider-header">
-            <span>Montaje Físico Galería (Ñuñoa)</span>
-            <span id="val-production">$ 12.000.000 CLP</span>
-          </div>
-          <input type="range" id="slider-production" min="5000000" max="25000000" step="1000000" value="12000000" oninput="calculateBudget()">
-        </div>
+    const total = prod + ag + med + syn + pr + dev;
+    document.getElementById('budget-total').textContent = fmt(total);
 
-        <div class="budget-slider-group">
-          <div class="budget-slider-header">
-            <span>Dirección Creativa y Fee rAio Studios</span>
-            <span id="val-agency">$ 24.000.000 CLP</span>
-          </div>
-          <input type="range" id="slider-agency" min="15000000" max="45000000" step="1000000" value="24000000" oninput="calculateBudget()">
-        </div>
+    const roas = 4.8;
+    const revenue = Math.round(med * roas);
+    const earnedMedia = 80000000;
 
-        <div class="budget-slider-group">
-          <div class="budget-slider-header">
-            <span>Pauta en Medios Digitales (Paid Media)</span>
-            <span id="val-media">$ 35.000.000 CLP</span>
-          </div>
-          <input type="range" id="slider-media" min="15000000" max="80000000" step="5000000" value="35000000" oninput="calculateBudget()">
-        </div>
+    document.getElementById('roas-val').textContent    = roas.toFixed(1) + 'x';
+    document.getElementById('earned-val').textContent  = '$' + Math.round(earnedMedia/1000000) + 'M';
+    document.getElementById('revenue-val').textContent = '$' + Math.round(revenue/1000000) + 'M';
+  }
 
-        <div class="budget-slider-group">
-          <div class="budget-slider-header">
-            <span>Motor de Producción de Video IA (Sintética)</span>
-            <span id="val-synthetic">$ 9.000.000 CLP</span>
-          </div>
-          <input type="range" id="slider-synthetic" min="5000000" max="20000000" step="1000000" value="9000000" oninput="calculateBudget()">
-        </div>
+  // ─── KEYBOARD NAVIGATION ───────────────────
+  document.addEventListener('keydown', (e) => {
+    const slides  = ['s01','s02','s03','s04','s05','s06','s07','s08','s09','s10','s11','s12','s13'];
+    const current = document.querySelector('.nav-btn.active')?.dataset?.s;
+    const idx = slides.indexOf(current);
+    if (e.key === 'ArrowRight' && idx < slides.length - 1) gotoSlide(slides[idx+1]);
+    if (e.key === 'ArrowLeft'  && idx > 0)                 gotoSlide(slides[idx-1]);
+  });
+</script>
 
-        <div class="budget-slider-group">
-          <div class="budget-slider-header">
-            <span>Agencia de Relaciones Públicas & PR Kits</span>
-            <span id="val-pr">$ 12.500.000 CLP</span>
-          </div>
-          <input type="range" id="slider-pr" min="5000000" max="25000000" step="5000000" value="12500000" oninput="calculateBudget()">
-        </div>
-
-        <div class="budget-total-box">
-          <h4>TOTAL ESTIMADO DE CAMPAÑA:</h4>
-          <span class="budget-total-val" id="budget-total-val">$ 92.500.000 CLP</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE: KPIs -->
-    <section id="slide-kpis" class="slide-section">
-      <span class="eyebrow">KPIs & IMPACTO EN EL NEGOCIO</span>
-      <h1>CÓMO GANAR EL EFFIE DE ORO</h1>
-      <p class="lead-text">Nuestra métrica de éxito no son los likes; es el retorno sobre la inversión (ROAS) y la limpieza del stock rezagado en bodega.</p>
-
-      <div class="grid-2">
-        <div class="glass-card">
-          <h3><i class="fa-solid fa-money-bill-trend-up"></i> ROAS Objetivo de 4.8x</h3>
-          <p>Dado que el descuento de "caja fea" es altamente atractivo (25% a 40% menor al precio de lista de mercado), estimamos un retorno de inversión en pauta de al menos 4.8 veces el presupuesto de medios.</p>
-        </div>
-        <div class="glass-card">
-          <h3><i class="fa-solid fa-users-line"></i> Cobertura de Earned Media</h3>
-          <p>Apuntamos a generar al menos $80.000.000 CLP en cobertura mediática equivalente (menciones en prensa, despachos de TV, articulos web y posts orgánicos de influencers sin pagar fee de pauta de rostros).</p>
-        </div>
-      </div>
-
-      <div class="felipe-quote">
-        <p>"Los Effies se ganan demostrando que un dolor real de la empresa (los cartones arrugados en bodega) se resolvió con creatividad, bajando el costo de adquisición de clientes."</p>
-        <span>Felipe Becerra</span>
-      </div>
-
-      <!-- Mini Chart representing ROI projection -->
-      <div class="pop-up-visualizer" style="margin-top:2rem;">
-        <h4>Proyección de Retorno vs Inversión de Campaña</h4>
-        <svg class="scatter-chart-svg" width="100%" height="150">
-          <!-- Baseline grid -->
-          <line x1="50" y1="120" x2="600" y2="120" stroke="rgba(255,255,255,0.1)" stroke-width="1"></line>
-          <!-- Bars representing ROI -->
-          <rect x="100" y="90" width="60" height="30" fill="var(--accent-purple)" rx="3"></rect>
-          <text x="130" y="135" text-anchor="middle" fill="#fff" font-size="10">Inversión</text>
-          
-          <rect x="250" y="30" width="60" height="90" fill="var(--accent-green)" rx="3"></rect>
-          <text x="280" y="135" text-anchor="middle" fill="#fff" font-size="10">Retorno Directo</text>
-          
-          <rect x="400" y="50" width="60" height="70" fill="var(--accent-cyan)" rx="3"></rect>
-          <text x="430" y="135" text-anchor="middle" fill="#fff" font-size="10">Earned Media</text>
-        </svg>
-      </div>
-    </section>
-
-    <!-- SLIDE: Roadmap -->
-    <section id="slide-roadmap" class="slide-section">
-      <span class="eyebrow">ROADMAP DE EJECUCIÓN</span>
-      <h1>EL PLAN DE 90 DÍAS</h1>
-      <p class="lead-text">Una estructura por fases diseñada para blindar el canal de ventas digital antes de la temporada alta de Cyber y Navidad en el Q4.</p>
-
-      <div class="timeline">
-        <div class="timeline-item active">
-          <div class="timeline-dot"></div>
-          <h4 class="timeline-title">Fase 1: Diagnóstico e Integración (Días 1 a 20)</h4>
-          <p class="timeline-desc">Filtramos la base de datos de SQLite, catalogamos los productos con empaque defectuoso, creamos el selector del checkout y diseñamos la línea visual de marca con Lesther Santander.</p>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <h4 class="timeline-title">Fase 2: Lanzamiento del Stunt de PR (Días 21 a 45)</h4>
-          <p class="timeline-desc">Envío del peor kit de unboxing a líderes de opinión del ecosistema tech chileno. Inauguración de la Galería "Cartón Roto" física en Ñuñoa. Cobertura mediática e impacto inicial.</p>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <h4 class="timeline-title">Fase 3: Campaña de Performance e IA (Días 46 a 90)</h4>
-          <p class="timeline-desc">Activación del remarketing dinámico. Producción masiva automatizada de videos de Reels mediante nuestro presentador virtual generado por IA de rAio Studios. Sincronización del catálogo Q4.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE: Closing -->
-    <section id="slide-closing" class="slide-section">
-      <span class="eyebrow">EQUIPO ASIGNADO</span>
-      <h1>EL EQUIPO DE rAio STUDIOS</h1>
-      <p class="lead-text">Ponemos a disposición de Winpy un equipo multidisciplinario experto con trayectoria comprobada en agencias globales.</p>
-
-      <div class="grid-2">
-        <div class="glass-card">
-          <h3>Felipe Becerra</h3>
-          <span class="eyebrow" style="color:var(--text-muted)">Dirección Creativa</span>
-          <p>Ex-Wunderman Thompson y Prolam Y&R. Ganador de múltiples Effies de Oro, ACHAP y Cannes Lions. Encargado del tono de marca, conceptos y guiones reactivos.</p>
-        </div>
-        <div class="glass-card">
-          <h3>Mónica Arancibia</h3>
-          <span class="eyebrow" style="color:var(--text-muted)">Planificación Táctica</span>
-          <p>Diseño de grillas editoriales, análisis de la base de datos y segmentación estratégica del catálogo para las campañas dinámicas.</p>
-        </div>
-        <div class="glass-card">
-          <h3>Carolina Herreros</h3>
-          <span class="eyebrow" style="color:var(--text-muted)">Dirección de Cuentas</span>
-          <p>Liderazgo de proyectos y nexo operativo directo con Patricio y el equipo comercial interno de Winpy.</p>
-        </div>
-        <div class="glass-card">
-          <h3>Lesther Santander</h3>
-          <span class="eyebrow" style="color:var(--text-muted)">Diseño y Arte Visual</span>
-          <p>Creador del sistema gráfico disruptivo, layouts del pop-up físico y animaciones para la pauta digital.</p>
-        </div>
-      </div>
-
-      <div class="pop-up-visualizer" style="margin-top:2.5rem; text-align:center;">
-        <h3>¿Damos el gran salto creativo?</h3>
-        <p>Patricio, hagamos que Winpy se comporte como una marca de tecnología viva.</p>
-        <button class="btn btn-primary" onclick="document.querySelector('[data-slide=slide-cover]').click()" style="margin-top:1rem;">
-          <i class="fa-solid fa-rotate-left"></i> Volver a empezar
-        </button>
-      </div>
-    </section>
-
-  </main>
-
-  <script>
-    // Slide Navigation Logic
-    const menuItems = document.querySelectorAll('.menu-item');
-    const sections = document.querySelectorAll('.slide-section');
-
-    menuItems.forEach(item => {
-      item.addEventListener('click', () => {
-        const target = item.getAttribute('data-slide');
-        
-        // Remove active class
-        menuItems.forEach(i => i.classList.remove('active'));
-        sections.forEach(s => s.classList.remove('active'));
-        
-        // Add active class
-        item.classList.add('active');
-        document.getElementById(target).classList.add('active');
-      });
-    });
-
-    // Mockup checkout selection toggle
-    function toggleMockupOption(selectedId) {
-      document.getElementById('opt-perfect').classList.remove('selected');
-      document.getElementById('opt-ugly').classList.remove('selected');
-      
-      document.getElementById(selectedId).classList.add('selected');
-    }
-
-    // Interactive Budget Calculation
-    function calculateBudget() {
-      const prod = parseInt(document.getElementById('slider-production').value);
-      const agency = parseInt(document.getElementById('slider-agency').value);
-      const media = parseInt(document.getElementById('slider-media').value);
-      const synth = parseInt(document.getElementById('slider-synthetic').value);
-      const pr = parseInt(document.getElementById('slider-pr').value);
-      
-      // Update individual labels
-      document.getElementById('val-production').textContent = '$ ' + prod.toLocaleString('es-CL') + ' CLP';
-      document.getElementById('val-agency').textContent = '$ ' + agency.toLocaleString('es-CL') + ' CLP';
-      document.getElementById('val-media').textContent = '$ ' + media.toLocaleString('es-CL') + ' CLP';
-      document.getElementById('val-synthetic').textContent = '$ ' + synth.toLocaleString('es-CL') + ' CLP';
-      document.getElementById('val-pr').textContent = '$ ' + pr.toLocaleString('es-CL') + ' CLP';
-      
-      // Total
-      const total = prod + agency + media + synth + pr;
-      document.getElementById('budget-total-val').textContent = '$ ' + total.toLocaleString('es-CL') + ' CLP';
-    }
-  </script>
 </body>
 </html>
